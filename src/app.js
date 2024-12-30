@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 
-// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -12,7 +11,6 @@ const authRoutes = require('./routes/authRoutes');
 
 app.use('/api/weather', weatherRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
-app.use('/api/iss', issRoutes);
 app.use('/api/info', infoRoutes);
 app.use('/api/auth', authRoutes);
 
