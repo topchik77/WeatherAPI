@@ -165,12 +165,26 @@
     </footer>
 
     <script>
+
+        const apiKey = "735c38398d81f931cdf9800b3ee7ff18";
+        const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=astana";
+    
+    
+        async function checkWeather(){
+            const response = await fetch(apiUrl + `&appid=${apiKey}`);
+            var data = await response.json();
+    
+            console.log(data);
+        }
+
         function checkEmail() {
             let email = document.querySelector('#emailField').value;
             if(!email.includes('@')) alert('Нет символа @');
             else if(!email.includes('.')) alert('Нет символа .');
             else alert('Все отлично');
         }
+
+        checkWeather();
     </script>
 </body>
 
