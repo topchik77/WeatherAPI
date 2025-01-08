@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const validator = require('../middleware/validator');
-const auth = require('../middleware/auth');
+const validator = require('@middleware/validator');
+const auth = require('@middleware/auth');
 
 /**
  * @route POST /api/subscriptions
