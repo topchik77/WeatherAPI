@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 
-// Register a new user
 const registerUser = async (req, res) => {
   const { username, password, email } = req.body;
 
@@ -12,8 +11,7 @@ const registerUser = async (req, res) => {
       return res.status(400).json({ message: 'Username or email already exists' });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 12); // Encrypt password
-    const user = new User({ username, password: hashedPassword, email });
+    const user = new User({ username, password, email });
     await user.save();
 
     res.status(201).json({
@@ -25,7 +23,6 @@ const registerUser = async (req, res) => {
   }
 };
 
-// Login a user
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
 
@@ -35,36 +32,26 @@ const loginUser = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password); // Compare hashed passwords
+    const isMatch = await user.matchPassword(password); // Use matchPassword method
     if (!isMatch) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign(
-      { id: user._id, username: user.username },
-      process.env.JWT_SECRET,
-      { expiresIn: '1h' }
-    );
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.cookie('token', token, { httpOnly: true });
 
-    res.cookie('token', token, {
-      httpOnly: true,
-      secure: true, // !
-      maxAge: 3600000,
-    });
-
-    res.status(200).json({ message: 'Login successful' });
+    return res.status(200).json({ message: 'Login successful', token });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: 'Internal server error', error: error.message });
   }
 };
 
-// Logout a user
+
 const logoutUser = (req, res) => {
   res.clearCookie('token');
   res.status(200).json({ message: 'Logged out successfully' });
 };
 
-// Get user details (Protected route)
 const getUserDetails = async (req, res) => {
   const token = req.cookies.token;
 
@@ -74,7 +61,7 @@ const getUserDetails = async (req, res) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await User.findById(decoded.id).select('-password'); // Exclude password from response
+    const user = await User.findById(decoded.id).select('-password');
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
@@ -86,9 +73,8 @@ const getUserDetails = async (req, res) => {
   }
 };
 
-// Protect middleware to restrict access to authenticated users
 const protect = async (req, res, next) => {
-  const token = req.cookies.token || req.headers.authorization?.split(' ')[1]; // Check both cookies and headers
+  const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
 
   if (!token) {
     return res.status(401).json({ message: 'Unauthorized, no token provided' });
@@ -100,8 +86,8 @@ const protect = async (req, res, next) => {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    req.user = user; // Attach user to the request object for further use
-    next(); // Continue to the next middleware/route handler
+    req.user = user;
+    next();
   } catch (error) {
     res.status(401).json({ message: 'Unauthorized, token is invalid or expired' });
   }
