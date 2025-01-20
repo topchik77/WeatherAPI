@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>METEORIX</title>
+
+    <!-- Stylesheet for the page -->
+    <style>
+        /* General body and font styling */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+
+        /* Navigation bar styling */
+        .navbar {
+            background-color: #2c3e50; /* Dark blue for navbar */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar img {
+            height: 40px; /* Placeholder for logo */
+        }
+
+        .navbar nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .navbar nav a:hover {
+            color: #1abc9c; /* Light teal on hover */
+        }
+
+        /* Hamburger menu for smaller screens */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+        }
+
+        .hamburger div {
+            width: 100%;
+            height: 4px;
+            background-color: white;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile menu styling */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background-color: #34495e; /* Slightly darker blue for mobile menu */
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        .mobile-menu a {
+            color: white;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 1px solid #2c3e50;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #1abc9c; /* Light teal on hover */
+        }
+
+        /* Show mobile menu when active */
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .navbar nav {
+                display: none; /* Hide desktop menu */
+            }
+
+            .hamburger {
+                display: flex; /* Show hamburger menu */
+            }
+        }
+
+        /* Cover section styling */
+        .cover {
+            background-image: url('./img/cover.png'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .cover h1 {
+            font-size: 4rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .cover p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+
+
+
+        :root {
+            --unit: 1rem;
+            --primary-color-1: #46C2CB;
+            --primary-color-2: #E5E5CB;
+            --secondary-color: #2C3333;
+            --error-color: rgb(160, 24, 0);
+        }
+        
+        * {
+            margin: 0;
+        }
+        
+        [hidden] {
+            display: none !important;
+        }
+        
+        body {
+            background: var(--secondary-color);
+            font-family: sans-serif;
+        }
+        
+        
+        
+        
+        nav {
+            float: right;
+            width: 50%;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            z-index: 2;
+            position: relative;
+        }
+        
+        nav ul li {
+            display: inline-block;
+        }
+        
+        nav ul li a{
+            color: #fff
+        }
+        
+        nav ul li.active::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 5px;
+            background: #DC7000;
+            border-radius: 10px;
+            position: relative;
+            top: 7px;
+            left: -1px;
+        }
+        
+        nav ul li:not(.active):not(.btn) a:hover {
+            border-bottom: 5px solid #f89730;
+        }
+        
+        nav ul li.btn a, .email .block button {
+            background: #d38028;
+            padding: 12px 27px;
+            border-radius: 10px;
+            transition: all 500ms ease;
+        }
+        
+        nav ul li.btn a:hover, 
+        .email .block button:hover {
+            background: #8b4409;
+        }
+        
+        
+        
+        
+
+        
+        .weather {
+            max-width: 39rem;
+            min-width: 30rem;
+            margin: clamp(5rem, 15vh, 15rem) auto;
+            padding: 1rem;
+
+
+            background-image: linear-gradient(-45deg, var(--primary-color-1) 20%, var(--primary-color-2) 100%);
+            padding: 2rem;
+            border-radius: var(--unit);
+            display: grid;
+            gap: var(--unit);
+            transition: 100ms;
+        }
+        
+        .weather form {
+            display: flex;
+            gap: var(--unit);
+        }
+        
+        .search,
+        .search-btn {
+            height: calc(var(--unit) * 2.5);
+        }
+        
+        .search {
+            flex: 1;
+            background-color: white;
+            border-radius: calc(var(--unit) * 2.5);
+            display: flex;
+            align-items: center;
+            gap: calc(var(--unit) / 2);
+            padding: 0 var(--unit);
+        }
+        
+        .search input {
+            border: none;
+            outline: none;
+            background-color: transparent;
+            flex: 1;
+            font-size: var(--unit);
+            width: 0;
+        }
+        
+        input:hover,
+        input:active {
+            border: none;
+            outline: none;
+        }
+        
+        .search-btn {
+            border: none;
+            outline: none;
+            background-color: white;
+            border-radius: 50%;
+            aspect-ratio: 1;
+        }
+        
+        .search-btn:active {
+            transform: scale(0.9);
+        }
+        
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: calc(var(--unit) / 2);
+            margin-top: calc(var(--unit) / 2);
+            height: var(--unit);
+        }
+        
+        .loading span {
+            height: calc(var(--unit) / 2);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            opacity: 0.5;
+            filter: blur(0.5px);
+            animation: bounce 300ms forwards infinite alternate cubic-bezier(.37,.58,.7,1.22);
+        }
+        
+        .loading span:nth-child(2) {
+            animation-delay: 150ms;
+        }
+        
+        .loading span:nth-child(3) {
+            animation-delay: 300ms;
+        }
+        
+        @keyframes bounce {
+            from {
+                margin-top: 0;
+            }
+        
+            to {
+                margin-top: calc(var(--unit) / -1.5);
+            }
+        }
+        
+        .error {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: calc(var(--unit) / 2.5);
+            color: var(--error-color);
+            font-family: monospace;
+        }
+        
+        .error span {
+            font-size: var(--unit);
+        }
+        
+        .weather {
+            display: grid;
+            color: white;
+            gap: var(--unit);
+        }
+        
+        .heading {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: var(--unit);
+            padding-top: var(--unit);
+        }
+        
+        .heading-content {
+            display: grid;
+            gap: var(--unit);
+        }
+        
+        #behavior {
+            font-size: calc(var(--unit) * 1.5);
+        }
+        
+        .temp {
+            font-size: calc(var(--unit) * 2);
+        }
+        
+        .weather-icon-placeholder {
+            height: 100%;
+        }
+        
+        #weather-icon {
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        #city {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .information {
+            display: flex;
+        }
+        
+        .information p {
+            text-align: center;
+        }
+        
+        .info {
+            display: grid;
+            gap: calc(var(--unit) / 2); 
+        }
+        
+        .humidity {
+            flex: 3
+        }
+        
+        .wind-speed {
+            flex: 4;
+        }
+        
+        .flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--unit);
+        }
+        
+        .flex i {
+            font-size: calc(var(--unit) * 3);
+        }
+
+
+
+
+
+        /* Call-to-Action section styling */
+        .cta-section {
+            background-color: #1abc9c; /* Light teal background for CTA */
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-form input[type="email"] {
+            padding: 15px;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 400px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .cta-form button {
+            padding: 15px;
+            font-size: 1rem;
+            color: white;
+            background-color: #2c3e50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 400px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-form button:hover {
+            background-color: #34495e; /* Darker blue on hover */
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #34495e; /* Dark blue footer */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #1abc9c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            color: #16a085;
+        }
+
+        /* Responsive styling for smaller screens */
+        @media screen and (max-width: 768px) {
+            .cover h1 {
+                font-size: 3rem;
+            }
+
+            .cover p {
+                font-size: 1.2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-section p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <img src="./img/logo.png" alt="Meteorix Logo"> <!-- Placeholder logo -->
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#api">API</a>
+            <a href="./signup.html">Sign In</a>
+        </nav>
+        <!-- Hamburger menu -->
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="mobile-menu">
+            <a href="#home">Home</a>
+            <a href="#api">API</a>
+            <a href="#signin">Sign In</a>
+        </div>
+    </header>
+
+    <!-- Cover Section -->
+    <section class="cover" id="home">
+        <h1>Welcome to METEORIX</h1>
+        <p>Your weather data, all in one place.</p>
+    </section>
+
+    <section class="weather">
+        <form id="city-form">
+            <div class="search">
+                <input type="text" id="search-input" placeholder="enter city name">
+            </div>
+            <button id="search-btn" class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
+        <div class="loading" hidden>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="error" hidden>
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Unknown City</span>
+        </div>
+        <div class="weather" hidden>
+            <div class="heading">
+                <div class="heading-content">
+                    <h2 id="behavior"></h2>
+                    <h1 class="temp"><span id="temp"></span><span>°C</span></h1>
+                </div>
+                <div class="weather-icon-placeholder">
+                    <img id="weather-icon" alt="Weather Icon">
+                </div>
+            </div>
+            <div class="information">
+                <div class="humidity info">
+                    <div class="flex">
+                        <i class="fa-solid fa-water"></i>
+                        <h2><span id="humidity"></span>%</h2>
+                    </div>
+                    <p>Humidity</p>
+                </div>
+                <div class="wind-speed info">
+                    <div class="flex">
+                        <i class="fa-solid fa-wind"></i>
+                        <h1><span id="wind-speed"></span> km/h</h1>
+                    </div>
+                    <p>Wind Speed</p>
+                </div>
+            </div>
+            <h3 id="city"></h3>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <h2>Ready to Dive into the Weather Data?</h2>
+        <p>Access our API to get real-time weather information, forecasts, and much more. Leave your email below to stay updated!</p>
+
+        <!-- Call-to-action form -->
+        <div class="cta-form">
+            <input type="email" placeholder="Enter your Gmail to get updates..." required>
+            <button type="submit">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2025 METEORIX. All rights reserved.</p>
+        <p><a href="./privacyp.html">Privacy Policy</a> | <a href="./TermsofS.html">Terms of Service</a></p>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        // Toggle mobile menu
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+    </script>
+
+</body>
+
+</html>

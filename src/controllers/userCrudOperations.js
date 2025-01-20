@@ -5,7 +5,7 @@ const createUser = async (req, res) => {
   const { username, password, email } = req.body;
 
   try {
-    // Check if user already exists
+    // Check if user already xists
     const existingUser = await User.findOne({ $or: [{ username }, { email }] });
     if (existingUser) {
       return res.status(400).json({ message: 'Username or Email already exists' });
@@ -17,7 +17,7 @@ const createUser = async (req, res) => {
     await user.save();
     res.status(201).json({
       message: 'User created successfully',
-      user: { username: user.username, email: user.email },  // Don't return the password in the response
+      user: { username: user.username, email: user.email, id: user._id},  // Don't return the password in the response
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -67,7 +67,7 @@ const deleteUser = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    res.status(204).end();  // No content to return after deletion
+    res.status(200).json({ message: 'User sucsessfully deleted' })
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
