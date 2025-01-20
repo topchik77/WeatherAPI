@@ -1,19 +1,34 @@
-const express = require('express');
 const path = require('path');
-const connectDB = require('@config/db');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
-const routes = require('@routes/routes');
-const userAuthRoutes = require('@routes/userAuthRoutes');
-const userCrudRoutes = require('@routes/userCrudRoutes');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+const connectDB = require('./config/db');
+connectDB().catch(console.dir);
+
+const userRoutes = require('./routes/userRoutes');
+const userCrudRoutes = require('./routes/userCrudRoutes');
 
 const app = express();
-connectDB();
-// Middleware to parse JSON bodies in incoming requests
+
+// Middleware
 app.use(express.json());
+app.use(cookieParser());
+const PORT = process.env.PORT;
+app.use(cors({
+  origin: `http://localhost:${PORT}`, // Frontend URL
+  credentials: true, // Allow credentials (cookies)
+}));
 
-app.use(express.static(path.resolve(__dirname, 'frontend')));
-app.use('/', routes);
-app.use('/api/auth', userAuthRoutes);
-app.use('/api/users', userCrudRoutes);
+// Static Files
+app.use(express.static(path.join(__dirname, 'public')));
 
-module.exports = app;
+// API Routes
+app.use('/api/user', userRoutes);
+app.use('/api/userCrud', userCrudRoutes);
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
