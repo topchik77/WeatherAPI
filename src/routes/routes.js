@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
-const frontendPath = path.resolve(__dirname, '@frontend')
+const frontendPath = path.resolve(__dirname, '/frontend')
 
 
 // Page routes

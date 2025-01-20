@@ -1,19 +1,21 @@
 const express = require('express');
 const path = require('path');
-const connectDB = require('@config/db');
+const connectDB = require('./config/db.js');
 
 const axios = require('axios');
 const app = express();
-const PORT = 3000;
+const PORT = 3000;  
+require('dotenv').config();
 
-const routes = require('@routes/routes');
-const userAuthRoutes = require('@routes/userAuthRoutes');
-const userCrudRoutes = require('@routes/userCrudRoutes');
+
+const routes = require('./routes/routes');
+const userAuthRoutes = require('./routes/userAuthRoutes');
+const userCrudRoutes = require('./routes/userCrudRoutes');
 
 
 connectDB();
 
-const API_KEY = '735c38398d81f931cdf9800b3ee7ff18';
+const API_KEY = process.env.WEATHERAPI;
 
 
 app.use(express.json());
@@ -80,7 +82,3 @@ app.use('/api/auth', userAuthRoutes);
 app.use('/api/users', userCrudRoutes);
 
 module.exports = app;
-
-
-
-
