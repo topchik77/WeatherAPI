@@ -9,6 +9,7 @@ connectDB().catch(console.dir);
 
 const userRoutes = require('./routes/userRoutes');
 const userCrudRoutes = require('./routes/userCrudRoutes');
+const forecastRoutes = require('./routes/forecastRoutes');
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // API Routes
 app.use('/api/user', userRoutes);
 app.use('/api/userCrud', userCrudRoutes);
+app.use('/api/forecast', forecastRoutes);
 
 // Start the server
 app.listen(PORT, () => {
