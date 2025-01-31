@@ -4,7 +4,7 @@ const { validateRegisterData, validateLoginData } = require('../middleware/valid
 
 const router = express.Router();
 
-// API routes
+
 router.post('/register', validateRegisterData, registerUser); // Register user
 router.post('/login', validateLoginData, loginUser); // Login user
 router.get('/details', protect, getUserDetails); // Access user info

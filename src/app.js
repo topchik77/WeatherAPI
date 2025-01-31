@@ -9,7 +9,11 @@ connectDB().catch(console.dir);
 
 const userRoutes = require('./routes/userRoutes');
 const userCrudRoutes = require('./routes/userCrudRoutes');
+
+
 const forecastRoutes = require('./routes/forecastRoutes');
+
+
 
 const app = express();
 
@@ -18,8 +22,8 @@ app.use(express.json());
 app.use(cookieParser());
 const PORT = process.env.PORT;
 app.use(cors({
-  origin: `http://localhost:${PORT}`, // Frontend URL
-  credentials: true, // Allow credentials (cookies)
+  origin: `http://localhost:${PORT}`,
+  credentials: true,
 }));
 
 // Static Files
@@ -29,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/user', userRoutes);
 app.use('/api/userCrud', userCrudRoutes);
 app.use('/api/forecast', forecastRoutes);
+
 
 // Start the server
 app.listen(PORT, () => {
