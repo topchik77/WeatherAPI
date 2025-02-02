@@ -15,14 +15,7 @@ const forecastSchema = new mongoose.Schema(
 
 
 forecastSchema.methods.calculateTemperature = function () {
-  const pressure = parseFloat(this.atmosphericPressure);
-  if (isNaN(pressure)) {
-    console.error(`Ошибка: atmosphericPressure (${this.atmosphericPressure}) не является числом`);
-    return null;
-  }
-  return (this.temperature * 5 - pressure / 100) * this.humidity;
+  return (this.temperature * 5 - this.atmosphericPressure / 100) * this.humidity;
 };
-
-
 
 module.exports = mongoose.model('Forecast', forecastSchema);
