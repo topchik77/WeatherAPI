@@ -18,13 +18,13 @@ router.get('/:city', async (req, res) => {
     res.json({
       city: forecast.city,
       temperature: forecast.temperature,
-      calculatedTemperature: calculatedTemperature.toFixed(2),
+      calculatedTemperature: isNaN(calculatedTemperature) ? "Invalid data" : calculatedTemperature.toFixed(2),
       humidity: forecast.humidity,
       windSpeed: forecast.windSpeed,
       description: forecast.description,
       date: forecast.date,
       atmosphericPressure: forecast.atmosphericPressure,
-    });
+    });    
   } catch (error) {
     res.status(500).json({ error: 'Ошибка сервера' });
   }
