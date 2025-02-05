@@ -1,909 +1,1200 @@
-[
-    {
-      "city": "Astana",
-      "temperature": 18,
-      "humidity": 75,
-      "windSpeed": 15,
-      "description": "Cloudy, rain, thunderstorm",
-      "date": "09.08.2024",
-      "atmospheric pressure": "1000.6"
-    },
-    {
-      "city": "Almaty",
-      "temperature": 29,
-      "humidity": 60,
-      "windSpeed": 5,
-      "description": "Partly cloudy, no precipitation",
-      "date": "09.08.2024",
-      "atmospheric pressure": "999.0"
-    },
-    {
-      "city": "Shymkent",
-      "temperature": 31,
-      "humidity": 55,
-      "windSpeed": 14,
-      "description": "Partly cloudy, no precipitation",
-      "date": "09.08.2024",
-      "atmospheric pressure": "1000.4"
-    },
-    {
-      "city": "Aktau",
-      "temperature": 26,
-      "humidity": 65,
-      "windSpeed": 12,
-      "description": "Partly cloudy, no precipitation",
-      "date": "09.08.2024",
-      "atmospheric pressure": "1010.8"
-    },
-    {
-      "city": "Aktobe",
-      "temperature": 21,
-      "humidity": 70,
-      "windSpeed": 12,
-      "description": "Cloudy, rain, thunderstorm",
-      "date": "09.08.2024",
-      "atmospheric pressure": "1007.3"
-    },
-    {
-      "city": "Atyrau",
-      "temperature": 28,
-      "humidity": 68,
-      "windSpeed": 11,
-      "description": "Cloudy, rain, thunderstorm",
-      "date": "09.08.2024",
-      "atmospheric pressure": "1007.2"
-    },
-    {
-      "city": "Karaganda",
-      "temperature": 22,
-      "humidity": 73,
-      "windSpeed": 15,
-      "description": "Cloudy, rain, thunderstorm",
-      "date": "09.08.2024",
-      "atmospheric pressure": "1000.0"
-    },
-    {
-      "city": "Pavlodar",
-      "temperature": 19,
-      "humidity": 80,
-      "windSpeed": 13,
-      "description": "Cloudy, occasional rain",
-      "date": "09.08.2024",
-      "atmospheric pressure": "1001.6"
-    },
-    {
-      "city": "Semey",
-      "temperature": 26,
-      "humidity": 70,
-      "windSpeed": 10,
-      "description": "Sunny, no precipitation",
-      "date": "09.08.2024",
-      "atmospheric pressure": "1001.4"
-    },
-    {
-      "city": "Taraz",
-      "temperature": 30,
-      "humidity": 50,
-      "windSpeed": 10,
-      "description": "Partly cloudy, no precipitation",
-      "date": "09.08.2024",
-      "atmospheric pressure": "999.6"
-    },
-    {
-      "city": "Kostanay",
-      "temperature": 20,
-      "humidity": 72,
-      "windSpeed": 14,
-      "description": "Cloudy, rain, occasional thunderstorm",
-      "date": "09.08.2024",
-      "atmospheric pressure": "1009.1"
-    },
-    {
-      "city": "Kyzylorda",
-      "temperature": 34,
-      "humidity": 40,
-      "windSpeed": 9,
-      "description": "Sunny, no precipitation",
-      "date": "09.08.2024",
-      "atmospheric pressure": "1000.6"
-    },
-    {
-      "city": "Uralsk",
-      "temperature": 23,
-      "humidity": 65,
-      "windSpeed": 13,
-      "description": "Cloudy, rain, occasional thunderstorm",
-      "date": "09.08.2024",
-      "atmospheric pressure": "1006.1"
-    },
-    {
-      "city": "Zhezkazgan",
-      "temperature": 25,
-      "humidity": 58,
-      "windSpeed": 12,
-      "description": "Partly cloudy, no precipitation",
-      "date": "09.08.2024",
-      "atmospheric pressure": "998.7"
-    },
-    {
-      "city": "Petropavlovsk",
-      "temperature": 17,
-      "humidity": 80,
-      "windSpeed": 15,
-      "description": "Cloudy, occasional rain",
-      "date": "09.08.2024",
-      "atmospheric pressure": "1008.7"
-    },
-    {
-      "city": "Turkistan",
-      "temperature": 33,
-      "humidity": 45,
-      "windSpeed": 10,
-      "description": "Sunny, no precipitation",
-      "date": "09.08.2024",
-      "atmospheric pressure": "1000.2"
-    },
-    {
-      "city": "Taldykorgan",
-      "temperature": 28,
-      "humidity": 65,
-      "windSpeed": 8,
-      "description": "Partly cloudy, no precipitation",
-      "date": "09.08.2024",
-      "atmospheric pressure": "1003.0"
-    },
-    {
-      "city": "Ekibastuz",
-      "temperature": 20,
-      "humidity": 75,
-      "windSpeed": 13,
-      "description": "Cloudy, occasional rain",
-      "date": "09.08.2024",
-      "atmospheric pressure": "1001.7"
-    },
-    {
-      "city": "Balkhash",
-      "temperature": 27,
-      "humidity": 60,
-      "windSpeed": 10,
-      "description": "Partly cloudy, no precipitation",
-      "date": "09.08.2024",
-      "atmospheric pressure": "999.5"
-    },
-    {
-      "city": "Kokshetau",
-      "temperature": 18,
-      "humidity": 78,
-      "windSpeed": 14,
-      "description": "Cloudy, rain, occasional thunderstorm",
-      "date": "09.08.2024",
-      "atmospheric pressure": "1006.1"
-    },
-    {
-        "city": "Astana",
-        "temperature": 16,
-        "humidity": 82,
-        "windSpeed": 2,
-        "description": "Clear",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1033.7"
-    },
-    {
-        "city": "Almaty",
-        "temperature": 13,
-        "humidity": 82,
-        "windSpeed": 3,
-        "description": "Clear",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1027.5"
-    },
-    {
-        "city": "Kostanay",
-        "temperature": 21,
-        "humidity": 82,
-        "windSpeed": 3,
-        "description": "Cloudy",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1034.3"
-    },
-    {
-        "city": "Shymkent",
-        "temperature": 23,
-        "humidity": 70,
-        "windSpeed": 10,
-        "description": "Rain with thunderstorm",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1018.9"
-    },
-    {
-        "city": "Aktobe",
-        "temperature": 18,
-        "humidity": 75,
-        "windSpeed": 5,
-        "description": "Partly cloudy",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1036.4"
-    },
-    {
-        "city": "Atyrau",
-        "temperature": 20,
-        "humidity": 65,
-        "windSpeed": 7,
-        "description": "Clear",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1032.3"
-    },
-    {
-        "city": "Karaganda",
-        "temperature": 15,
-        "humidity": 80,
-        "windSpeed": 4,
-        "description": "Cloudy",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1026.9"
-    },
-    {
-        "city": "Pavlodar",
-        "temperature": 17,
-        "humidity": 78,
-        "windSpeed": 3,
-        "description": "Cloudy",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1034.7"
-    },
-    {
-        "city": "Semey",
-        "temperature": 19,
-        "humidity": 72,
-        "windSpeed": 6,
-        "description": "Sunny",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1037.5"
-    },
-    {
-        "city": "Taraz",
-        "temperature": 22,
-        "humidity": 68,
-        "windSpeed": 5,
-        "description": "Partly cloudy",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1026.1"
-    },
-    {
-        "city": "Kyzylorda",
-        "temperature": 25,
-        "humidity": 50,
-        "windSpeed": 7,
-        "description": "Clear",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1028.3"
-    },
-    {
-        "city": "Uralsk",
-        "temperature": 16,
-        "humidity": 85,
-        "windSpeed": 6,
-        "description": "Rainy",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1034.2"
-    },
-    {
-        "city": "Zhezkazgan",
-        "temperature": 18,
-        "humidity": 65,
-        "windSpeed": 5,
-        "description": "Partly cloudy",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1033.1"
-    },
-    {
-        "city": "Petropavlovsk",
-        "temperature": 12,
-        "humidity": 78,
-        "windSpeed": 8,
-        "description": "Cloudy with rain",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1031.1"
-    },
-    {
-        "city": "Turkistan",
-        "temperature": 26,
-        "humidity": 45,
-        "windSpeed": 5,
-        "description": "Clear",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1031.1"
-    },
-    {
-        "city": "Taldykorgan",
-        "temperature": 20,
-        "humidity": 65,
-        "windSpeed": 4,
-        "description": "Partly cloudy",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1028.2"
-    },
-    {
-        "city": "Ekibastuz",
-        "temperature": 14,
-        "humidity": 82,
-        "windSpeed": 3,
-        "description": "Cloudy",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1034.0"
-    },
-    {
-        "city": "Balkhash",
-        "temperature": 22,
-        "humidity": 60,
-        "windSpeed": 5,
-        "description": "Partly cloudy",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1033.6"
-    },
-    {
-        "city": "Kokshetau",
-        "temperature": 14,
-        "humidity": 85,
-        "windSpeed": 4,
-        "description": "Rain with thunderstorm",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1033.3"
-    },
-    {
-        "city": "Aktau",
-        "temperature": 19,
-        "humidity": 70,
-        "windSpeed": 6,
-        "description": "Cloudy with rain",
-        "date": "29.09.2024",
-      "atmospheric pressure": "1027.1"
-    },
-    {
-          "city": "Astana",
-          "temperature": -15,
-          "humidity": 85,
-          "windSpeed": 10,
-          "description": "Snowy, strong wind",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1038.8"
-    },
-    {
-          "city": "Almaty",
-          "temperature": -5,
-          "humidity": 80,
-          "windSpeed": 5,
-          "description": "Partly cloudy, no precipitation",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1047.0"
-    },
-    {
-          "city": "Shymkent",
-          "temperature": -2,
-          "humidity": 70,
-          "windSpeed": 7,
-          "description": "Partly cloudy, occasional snow",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1043.9"
-    },
-    {
-          "city": "Aktau",
-          "temperature": 0,
-          "humidity": 75,
-          "windSpeed": 12,
-          "description": "Cloudy, occasional snow",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1016.9"
-    },
-    {
-          "city": "Aktobe",
-          "temperature": -12,
-          "humidity": 78,
-          "windSpeed": 8,
-          "description": "Cloudy, light snow",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1024.4"
-    },
-    {
-          "city": "Atyrau",
-          "temperature": -8,
-          "humidity": 80,
-          "windSpeed": 10,
-          "description": "Snowy, windy",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1018.5"
-    },
-    {
-          "city": "Karaganda",
-          "temperature": -14,
-          "humidity": 85,
-          "windSpeed": 9,
-          "description": "Snowy, strong wind",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1043.2"
-    },
-    {
-          "city": "Pavlodar",
-          "temperature": -16,
-          "humidity": 90,
-          "windSpeed": 10,
-          "description": "Cloudy, heavy snow",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1038.3"
-    },
-    {
-          "city": "Semey",
-          "temperature": -13,
-          "humidity": 88,
-          "windSpeed": 7,
-          "description": "Cloudy, occasional snow",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1039.8"
-    },
-    {
-          "city": "Taraz",
-          "temperature": -4,
-          "humidity": 70,
-          "windSpeed": 6,
-          "description": "Partly cloudy, no precipitation",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1044.9"
-    },
-    {
-          "city": "Kostanay",
-          "temperature": -15,
-          "humidity": 85,
-          "windSpeed": 8,
-          "description": "Snowy, windy",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1025.0"
-    },
-    {
-          "city": "Kyzylorda",
-          "temperature": -10,
-          "humidity": 65,
-          "windSpeed": 9,
-          "description": "Cloudy, light snow",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1041.6"
-    },
-    {
-          "city": "Uralsk",
-          "temperature": -11,
-          "humidity": 80,
-          "windSpeed": 7,
-          "description": "Cloudy, occasional snow",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1010.7"
-    },
-    {
-          "city": "Zhezkazgan",
-          "temperature": -13,
-          "humidity": 78,
-          "windSpeed": 6,
-          "description": "Partly cloudy, occasional snow",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1042.5"
-    },
-    {
-          "city": "Petropavlovsk",
-          "temperature": -17,
-          "humidity": 90,
-          "windSpeed": 9,
-          "description": "Cloudy, heavy snow",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1025.0"
-    },
-    {
-          "city": "Turkistan",
-          "temperature": -3,
-          "humidity": 68,
-          "windSpeed": 5,
-          "description": "Partly cloudy, no precipitation",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1044.0"
-    },
-    {
-          "city": "Taldykorgan",
-          "temperature": -6,
-          "humidity": 75,
-          "windSpeed": 6,
-          "description": "Cloudy, light snow",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1045.6"
-    },
-    {
-          "city": "Ekibastuz",
-          "temperature": -14,
-          "humidity": 88,
-          "windSpeed": 7,
-          "description": "Cloudy, heavy snow",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1038.4"
-    },
-    {
-          "city": "Balkhash",
-          "temperature": -8,
-          "humidity": 78,
-          "windSpeed": 6,
-          "description": "Partly cloudy, light snow",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1048.3"
-    },
-    {
-          "city": "Kokshetau",
-          "temperature": -16,
-          "humidity": 88,
-          "windSpeed": 8,
-          "description": "Cloudy, snowy",
-          "date": "16.12.2024",
-      "atmospheric pressure": "1029.7"
-    },
-    {
-          "city": "Astana",
-          "temperature": 6.5,
-          "humidity": 88,
-          "windSpeed": 9.7,
-          "description": "Rain and snow",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1017.0"
-    },
-    {
-          "city": "Almaty",
-          "temperature": 14.7,
-          "humidity": 60,
-          "windSpeed": 5,
-          "description": "Partly cloudy, no precipitation",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1016.6"
-    },
-    {
-          "city": "Shymkent",
-          "temperature": 15.1,
-          "humidity": 55,
-          "windSpeed": 7,
-          "description": "Partly cloudy, no precipitation",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1018.3"
-    },
-    {
-          "city": "Aktau",
-          "temperature": 18.1,
-          "humidity": 65,
-          "windSpeed": 12,
-          "description": "Partly cloudy, no precipitation",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1017.9"
-    },
-    {
-          "city": "Aktobe",
-          "temperature": 11.6,
-          "humidity": 70,
-          "windSpeed": 8,
-          "description": "Cloudy, light rain",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1018.9"
-    },
-    {
-          "city": "Atyrau",
-          "temperature": 17.9,
-          "humidity": 68,
-          "windSpeed": 10,
-          "description": "Cloudy, light rain",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1020.7"
-    },
-    {
-          "city": "Karaganda",
-          "temperature": 13.6,
-          "humidity": 73,
-          "windSpeed": 9,
-          "description": "Cloudy, light rain",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1014.8"
-    },
-    {
-          "city": "Pavlodar",
-          "temperature": 6.3,
-          "humidity": 80,
-          "windSpeed": 7,
-          "description": "Cloudy, occasional rain",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1019.4"
-    },
-    {
-          "city": "Semey",
-          "temperature": 10.7,
-          "humidity": 70,
-          "windSpeed": 6,
-          "description": "Sunny, no precipitation",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1017.1"
-    },
-    {
-          "city": "Taraz",
-          "temperature": 14.0,
-          "humidity": 50,
-          "windSpeed": 6,
-          "description": "Partly cloudy, no precipitation",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1018.4"
-    },
-    {
-          "city": "Kostanay",
-          "temperature": 8.0,
-          "humidity": 72,
-          "windSpeed": 8,
-          "description": "Cloudy, light rain",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1020.7"
-    },
-    {
-          "city": "Kyzylorda",
-          "temperature": 20.9,
-          "humidity": 40,
-          "windSpeed": 9,
-          "description": "Sunny, no precipitation",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1019.0"
-    },
-    {
-          "city": "Uralsk",
-          "temperature": 12.5,
-          "humidity": 65,
-          "windSpeed": 7,
-          "description": "Cloudy, light rain",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1024.9"
-    },
-    {
-          "city": "Zhezkazgan",
-          "temperature": 20.9,
-          "humidity": 58,
-          "windSpeed": 8,
-          "description": "Partly cloudy, no precipitation",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1016.4"
-    },
-    {
-          "city": "Petropavlovsk",
-          "temperature": 2.7,
-          "humidity": 80,
-          "windSpeed": 9,
-          "description": "Cloudy, occasional rain",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1022.1"
-    },
-    {
-          "city": "Turkistan",
-          "temperature": 15.1,
-          "humidity": 45,
-          "windSpeed": 7,
-          "description": "Sunny, no precipitation",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1018.0"
-    },
-    {
-          "city": "Taldykorgan",
-          "temperature": 15.6,
-          "humidity": 65,
-          "windSpeed": 6,
-          "description": "Partly cloudy, no precipitation",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1016.9"
-    },
-    {
-          "city": "Ekibastuz",
-          "temperature": 6.3,
-          "humidity": 75,
-          "windSpeed": 7,
-          "description": "Cloudy, occasional rain",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1019.3"
-    },
-    {
-          "city": "Balkhash",
-          "temperature": 16.5,
-          "humidity": 60,
-          "windSpeed": 6,
-          "description": "Partly cloudy, no precipitation",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1016.4"
-    },
-    {
-          "city": "Kokshetau",
-          "temperature": 6.7,
-          "humidity": 78,
-          "windSpeed": 8,
-          "description": "Cloudy, light rain",
-          "date": "30.04.2024",
-      "atmospheric pressure": "1020.8"
-    },
-    {
-          "city": "Astana",
-          "temperature": 2.8,
-          "humidity": 80,
-          "windSpeed": 10,
-          "description": "Partly cloudy",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1008.4"
-    },
-    {
-          "city": "Almaty",
-          "temperature": 13.9,
-          "humidity": 60,
-          "windSpeed": 5,
-          "description": "Sunny",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1014.4"
-    },
-    {
-          "city": "Shymkent",
-          "temperature": 18.1,
-          "humidity": 55,
-          "windSpeed": 7,
-          "description": "Sunny",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1012.2"
-    },
-    {
-          "city": "Aktau",
-          "temperature": 6.4,
-          "humidity": 65,
-          "windSpeed": 12,
-          "description": "Cloudy",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1020.0"
-    },
-    {
-          "city": "Aktobe",
-          "temperature": -1.0,
-          "humidity": 70,
-          "windSpeed": 8,
-          "description": "Overcast",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1014.5"
-    },
-    {
-          "city": "Atyrau",
-          "temperature": 2.0,
-          "humidity": 68,
-          "windSpeed": 10,
-          "description": "Cloudy",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1017.8"
-    },
-    {
-          "city": "Karaganda",
-          "temperature": 6.3,
-          "humidity": 73,
-          "windSpeed": 9,
-          "description": "Partly cloudy",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1009.5"
-    },
-    {
-          "city": "Pavlodar",
-          "temperature": 6.9,
-          "humidity": 80,
-          "windSpeed": 7,
-          "description": "Partly cloudy",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1008.2"
-    },
-    {
-          "city": "Semey",
-          "temperature": 10.1,
-          "humidity": 70,
-          "windSpeed": 6,
-          "description": "Sunny",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1015.2"
-    },
-    {
-          "city": "Taraz",
-          "temperature": 16.9,
-          "humidity": 50,
-          "windSpeed": 6,
-          "description": "Sunny",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1012.3"
-    },
-    {
-          "city": "Kostanay",
-          "temperature": -2.2,
-          "humidity": 72,
-          "windSpeed": 8,
-          "description": "Overcast",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1009.6"
-    },
-    {
-          "city": "Kyzylorda",
-          "temperature": 9.6,
-          "humidity": 40,
-          "windSpeed": 9,
-          "description": "Sunny",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1012.7"
-    },
-    {
-          "city": "Uralsk",
-          "temperature": -1.5,
-          "humidity": 65,
-          "windSpeed": 7,
-          "description": "Overcast",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1012.6"
-    },
-    {
-          "city": "Zhezkazgan",
-          "temperature": 9.6,
-          "humidity": 58,
-          "windSpeed": 8,
-          "description": "Partly cloudy",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1011.1"
-    },
-    {
-          "city": "Petropavlovsk",
-          "temperature": -0.7,
-          "humidity": 80,
-          "windSpeed": 9,
-          "description": "Overcast",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1005.5"
-    },
-    {
-          "city": "Turkistan",
-          "temperature": 18.1,
-          "humidity": 45,
-          "windSpeed": 7,
-          "description": "Sunny",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1012.4"
-    },
-    {
-          "city": "Taldykorgan",
-          "temperature": 11.4,
-          "humidity": 65,
-          "windSpeed": 6,
-          "description": "Sunny",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1013.7"
-    },
-    {
-          "city": "Ekibastuz",
-          "temperature": 6.9,
-          "humidity": 75,
-          "windSpeed": 7,
-          "description": "Partly cloudy",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1007.8"
-    },
-    {
-          "city": "Balkhash",
-          "temperature": 9.5,
-          "humidity": 60,
-          "windSpeed": 6,
-          "description": "Sunny",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1013.4"
-    },
-    {
-          "city": "Kokshetau",
-          "temperature": -3.9,
-          "humidity": 78,
-          "windSpeed": 8,
-          "description": "Overcast",
-          "date": "04.11.2024",
-      "atmospheric pressure": "1008.3"
-    }
-
-           
-      
-      
-      
-]
-
-  
+[{
+  "_id": {
+    "$oid": "678e96e8495de418e0183609"
+  },
+  "city": "Astana",
+  "temperature": 18,
+  "humidity": 75,
+  "windSpeed": 15,
+  "description": "Cloudy, rain, thunderstorm",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1000.6
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018360a"
+  },
+  "city": "Almaty",
+  "temperature": 29,
+  "humidity": 60,
+  "windSpeed": 5,
+  "description": "Partly cloudy, no precipitation",
+  "date": "09.08.2024",
+  "atmosphericPressure": 999
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018360b"
+  },
+  "city": "Shymkent",
+  "temperature": 31,
+  "humidity": 55,
+  "windSpeed": 14,
+  "description": "Partly cloudy, no precipitation",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1000.4
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018360c"
+  },
+  "city": "Aktau",
+  "temperature": 26,
+  "humidity": 65,
+  "windSpeed": 12,
+  "description": "Partly cloudy, no precipitation",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1010.8
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018360d"
+  },
+  "city": "Aktobe",
+  "temperature": 21,
+  "humidity": 70,
+  "windSpeed": 12,
+  "description": "Cloudy, rain, thunderstorm",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1007.3
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018360e"
+  },
+  "city": "Atyrau",
+  "temperature": 28,
+  "humidity": 68,
+  "windSpeed": 11,
+  "description": "Cloudy, rain, thunderstorm",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1007.2
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018360f"
+  },
+  "city": "Karaganda",
+  "temperature": 22,
+  "humidity": 73,
+  "windSpeed": 15,
+  "description": "Cloudy, rain, thunderstorm",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1000
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183610"
+  },
+  "city": "Pavlodar",
+  "temperature": 19,
+  "humidity": 80,
+  "windSpeed": 13,
+  "description": "Cloudy, occasional rain",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1001.6
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183611"
+  },
+  "city": "Semey",
+  "temperature": 26,
+  "humidity": 70,
+  "windSpeed": 10,
+  "description": "Sunny, no precipitation",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1001.4
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183612"
+  },
+  "city": "Taraz",
+  "temperature": 30,
+  "humidity": 50,
+  "windSpeed": 10,
+  "description": "Partly cloudy, no precipitation",
+  "date": "09.08.2024",
+  "atmosphericPressure": 999.6
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183613"
+  },
+  "city": "Kostanay",
+  "temperature": 20,
+  "humidity": 72,
+  "windSpeed": 14,
+  "description": "Cloudy, rain, occasional thunderstorm",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1009.1
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183614"
+  },
+  "city": "Kyzylorda",
+  "temperature": 34,
+  "humidity": 40,
+  "windSpeed": 9,
+  "description": "Sunny, no precipitation",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1000.6
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183615"
+  },
+  "city": "Uralsk",
+  "temperature": 23,
+  "humidity": 65,
+  "windSpeed": 13,
+  "description": "Cloudy, rain, occasional thunderstorm",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1006.1
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183616"
+  },
+  "city": "Zhezkazgan",
+  "temperature": 25,
+  "humidity": 58,
+  "windSpeed": 12,
+  "description": "Partly cloudy, no precipitation",
+  "date": "09.08.2024",
+  "atmosphericPressure": 998.7
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183617"
+  },
+  "city": "Petropavlovsk",
+  "temperature": 17,
+  "humidity": 80,
+  "windSpeed": 15,
+  "description": "Cloudy, occasional rain",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1008.7
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183618"
+  },
+  "city": "Turkistan",
+  "temperature": 33,
+  "humidity": 45,
+  "windSpeed": 10,
+  "description": "Sunny, no precipitation",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1000.2
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183619"
+  },
+  "city": "Taldykorgan",
+  "temperature": 28,
+  "humidity": 65,
+  "windSpeed": 8,
+  "description": "Partly cloudy, no precipitation",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1003
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018361a"
+  },
+  "city": "Ekibastuz",
+  "temperature": 20,
+  "humidity": 75,
+  "windSpeed": 13,
+  "description": "Cloudy, occasional rain",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1001.7
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018361b"
+  },
+  "city": "Balkhash",
+  "temperature": 27,
+  "humidity": 60,
+  "windSpeed": 10,
+  "description": "Partly cloudy, no precipitation",
+  "date": "09.08.2024",
+  "atmosphericPressure": 999.5
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018361c"
+  },
+  "city": "Kokshetau",
+  "temperature": 18,
+  "humidity": 78,
+  "windSpeed": 14,
+  "description": "Cloudy, rain, occasional thunderstorm",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1006.1
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018361d"
+  },
+  "city": "Astana",
+  "temperature": 16,
+  "humidity": 82,
+  "windSpeed": 2,
+  "description": "Clear",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1033.7
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018361e"
+  },
+  "city": "Almaty",
+  "temperature": 13,
+  "humidity": 82,
+  "windSpeed": 3,
+  "description": "Clear",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1027.5
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018361f"
+  },
+  "city": "Kostanay",
+  "temperature": 21,
+  "humidity": 82,
+  "windSpeed": 3,
+  "description": "Cloudy",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1034.3
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183620"
+  },
+  "city": "Shymkent",
+  "temperature": 23,
+  "humidity": 70,
+  "windSpeed": 10,
+  "description": "Rain with thunderstorm",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1018.9
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183621"
+  },
+  "city": "Aktobe",
+  "temperature": 18,
+  "humidity": 75,
+  "windSpeed": 5,
+  "description": "Partly cloudy",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1036.4
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183622"
+  },
+  "city": "Atyrau",
+  "temperature": 20,
+  "humidity": 65,
+  "windSpeed": 7,
+  "description": "Clear",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1032.3
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183623"
+  },
+  "city": "Karaganda",
+  "temperature": 15,
+  "humidity": 80,
+  "windSpeed": 4,
+  "description": "Cloudy",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1026.9
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183624"
+  },
+  "city": "Pavlodar",
+  "temperature": 17,
+  "humidity": 78,
+  "windSpeed": 3,
+  "description": "Cloudy",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1034.7
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183625"
+  },
+  "city": "Semey",
+  "temperature": 19,
+  "humidity": 72,
+  "windSpeed": 6,
+  "description": "Sunny",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1037.5
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183626"
+  },
+  "city": "Taraz",
+  "temperature": 22,
+  "humidity": 68,
+  "windSpeed": 5,
+  "description": "Partly cloudy",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1026.1
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183627"
+  },
+  "city": "Kyzylorda",
+  "temperature": 25,
+  "humidity": 50,
+  "windSpeed": 7,
+  "description": "Clear",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1028.3
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183628"
+  },
+  "city": "Uralsk",
+  "temperature": 16,
+  "humidity": 85,
+  "windSpeed": 6,
+  "description": "Rainy",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1034.2
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183629"
+  },
+  "city": "Zhezkazgan",
+  "temperature": 18,
+  "humidity": 65,
+  "windSpeed": 5,
+  "description": "Partly cloudy",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1033.1
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018362a"
+  },
+  "city": "Petropavlovsk",
+  "temperature": 12,
+  "humidity": 78,
+  "windSpeed": 8,
+  "description": "Cloudy with rain",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1031.1
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018362b"
+  },
+  "city": "Turkistan",
+  "temperature": 26,
+  "humidity": 45,
+  "windSpeed": 5,
+  "description": "Clear",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1031.1
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018362c"
+  },
+  "city": "Taldykorgan",
+  "temperature": 20,
+  "humidity": 65,
+  "windSpeed": 4,
+  "description": "Partly cloudy",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1028.2
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018362d"
+  },
+  "city": "Ekibastuz",
+  "temperature": 14,
+  "humidity": 82,
+  "windSpeed": 3,
+  "description": "Cloudy",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1034
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018362e"
+  },
+  "city": "Balkhash",
+  "temperature": 22,
+  "humidity": 60,
+  "windSpeed": 5,
+  "description": "Partly cloudy",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1033.6
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018362f"
+  },
+  "city": "Kokshetau",
+  "temperature": 14,
+  "humidity": 85,
+  "windSpeed": 4,
+  "description": "Rain with thunderstorm",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1033.3
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183630"
+  },
+  "city": "Aktau",
+  "temperature": 19,
+  "humidity": 70,
+  "windSpeed": 6,
+  "description": "Cloudy with rain",
+  "date": "29.09.2024",
+  "atmosphericPressure": 1027.1
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183631"
+  },
+  "city": "Astana",
+  "temperature": -15,
+  "humidity": 85,
+  "windSpeed": 10,
+  "description": "Snowy, strong wind",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1038.8
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183632"
+  },
+  "city": "Almaty",
+  "temperature": -5,
+  "humidity": 80,
+  "windSpeed": 5,
+  "description": "Partly cloudy, no precipitation",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1047
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183633"
+  },
+  "city": "Shymkent",
+  "temperature": -2,
+  "humidity": 70,
+  "windSpeed": 7,
+  "description": "Partly cloudy, occasional snow",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1043.9
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183634"
+  },
+  "city": "Aktau",
+  "temperature": 0,
+  "humidity": 75,
+  "windSpeed": 12,
+  "description": "Cloudy, occasional snow",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1016.9
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183635"
+  },
+  "city": "Aktobe",
+  "temperature": -12,
+  "humidity": 78,
+  "windSpeed": 8,
+  "description": "Cloudy, light snow",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1024.4
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183636"
+  },
+  "city": "Atyrau",
+  "temperature": -8,
+  "humidity": 80,
+  "windSpeed": 10,
+  "description": "Snowy, windy",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1018.5
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183637"
+  },
+  "city": "Karaganda",
+  "temperature": -14,
+  "humidity": 85,
+  "windSpeed": 9,
+  "description": "Snowy, strong wind",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1043.2
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183638"
+  },
+  "city": "Pavlodar",
+  "temperature": -16,
+  "humidity": 90,
+  "windSpeed": 10,
+  "description": "Cloudy, heavy snow",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1038.3
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183639"
+  },
+  "city": "Semey",
+  "temperature": -13,
+  "humidity": 88,
+  "windSpeed": 7,
+  "description": "Cloudy, occasional snow",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1039.8
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018363a"
+  },
+  "city": "Taraz",
+  "temperature": -4,
+  "humidity": 70,
+  "windSpeed": 6,
+  "description": "Partly cloudy, no precipitation",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1044.9
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018363b"
+  },
+  "city": "Kostanay",
+  "temperature": -15,
+  "humidity": 85,
+  "windSpeed": 8,
+  "description": "Snowy, windy",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1025
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018363c"
+  },
+  "city": "Kyzylorda",
+  "temperature": -10,
+  "humidity": 65,
+  "windSpeed": 9,
+  "description": "Cloudy, light snow",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1041.6
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018363d"
+  },
+  "city": "Uralsk",
+  "temperature": -11,
+  "humidity": 80,
+  "windSpeed": 7,
+  "description": "Cloudy, occasional snow",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1010.7
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018363e"
+  },
+  "city": "Zhezkazgan",
+  "temperature": -13,
+  "humidity": 78,
+  "windSpeed": 6,
+  "description": "Partly cloudy, occasional snow",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1042.5
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018363f"
+  },
+  "city": "Petropavlovsk",
+  "temperature": -17,
+  "humidity": 90,
+  "windSpeed": 9,
+  "description": "Cloudy, heavy snow",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1025
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183640"
+  },
+  "city": "Turkistan",
+  "temperature": -3,
+  "humidity": 68,
+  "windSpeed": 5,
+  "description": "Partly cloudy, no precipitation",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1044
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183641"
+  },
+  "city": "Taldykorgan",
+  "temperature": -6,
+  "humidity": 75,
+  "windSpeed": 6,
+  "description": "Cloudy, light snow",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1045.6
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183642"
+  },
+  "city": "Ekibastuz",
+  "temperature": -14,
+  "humidity": 88,
+  "windSpeed": 7,
+  "description": "Cloudy, heavy snow",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1038.4
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183643"
+  },
+  "city": "Balkhash",
+  "temperature": -8,
+  "humidity": 78,
+  "windSpeed": 6,
+  "description": "Partly cloudy, light snow",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1048.3
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183644"
+  },
+  "city": "Kokshetau",
+  "temperature": -16,
+  "humidity": 88,
+  "windSpeed": 8,
+  "description": "Cloudy, snowy",
+  "date": "16.12.2024",
+  "atmosphericPressure": 1029.7
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183645"
+  },
+  "city": "Astana",
+  "temperature": 6.5,
+  "humidity": 88,
+  "windSpeed": 9.7,
+  "description": "Rain and snow",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1017
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183646"
+  },
+  "city": "Almaty",
+  "temperature": 14.7,
+  "humidity": 60,
+  "windSpeed": 5,
+  "description": "Partly cloudy, no precipitation",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1016.6
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183647"
+  },
+  "city": "Shymkent",
+  "temperature": 15.1,
+  "humidity": 55,
+  "windSpeed": 7,
+  "description": "Partly cloudy, no precipitation",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1018.3
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183648"
+  },
+  "city": "Aktau",
+  "temperature": 18.1,
+  "humidity": 65,
+  "windSpeed": 12,
+  "description": "Partly cloudy, no precipitation",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1017.9
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183649"
+  },
+  "city": "Aktobe",
+  "temperature": 11.6,
+  "humidity": 70,
+  "windSpeed": 8,
+  "description": "Cloudy, light rain",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1018.9
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018364a"
+  },
+  "city": "Atyrau",
+  "temperature": 17.9,
+  "humidity": 68,
+  "windSpeed": 10,
+  "description": "Cloudy, light rain",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1020.7
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018364b"
+  },
+  "city": "Karaganda",
+  "temperature": 13.6,
+  "humidity": 73,
+  "windSpeed": 9,
+  "description": "Cloudy, light rain",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1014.8
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018364c"
+  },
+  "city": "Pavlodar",
+  "temperature": 6.3,
+  "humidity": 80,
+  "windSpeed": 7,
+  "description": "Cloudy, occasional rain",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1019.4
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018364d"
+  },
+  "city": "Semey",
+  "temperature": 10.7,
+  "humidity": 70,
+  "windSpeed": 6,
+  "description": "Sunny, no precipitation",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1017.1
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018364e"
+  },
+  "city": "Taraz",
+  "temperature": 14,
+  "humidity": 50,
+  "windSpeed": 6,
+  "description": "Partly cloudy, no precipitation",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1018.4
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018364f"
+  },
+  "city": "Kostanay",
+  "temperature": 8,
+  "humidity": 72,
+  "windSpeed": 8,
+  "description": "Cloudy, light rain",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1020.7
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183650"
+  },
+  "city": "Kyzylorda",
+  "temperature": 20.9,
+  "humidity": 40,
+  "windSpeed": 9,
+  "description": "Sunny, no precipitation",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1019
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183651"
+  },
+  "city": "Uralsk",
+  "temperature": 12.5,
+  "humidity": 65,
+  "windSpeed": 7,
+  "description": "Cloudy, light rain",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1024.9
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183652"
+  },
+  "city": "Zhezkazgan",
+  "temperature": 20.9,
+  "humidity": 58,
+  "windSpeed": 8,
+  "description": "Partly cloudy, no precipitation",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1016.4
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183653"
+  },
+  "city": "Petropavlovsk",
+  "temperature": 2.7,
+  "humidity": 80,
+  "windSpeed": 9,
+  "description": "Cloudy, occasional rain",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1022.1
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183654"
+  },
+  "city": "Turkistan",
+  "temperature": 15.1,
+  "humidity": 45,
+  "windSpeed": 7,
+  "description": "Sunny, no precipitation",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1018
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183655"
+  },
+  "city": "Taldykorgan",
+  "temperature": 15.6,
+  "humidity": 65,
+  "windSpeed": 6,
+  "description": "Partly cloudy, no precipitation",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1016.9
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183656"
+  },
+  "city": "Ekibastuz",
+  "temperature": 6.3,
+  "humidity": 75,
+  "windSpeed": 7,
+  "description": "Cloudy, occasional rain",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1019.3
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183657"
+  },
+  "city": "Balkhash",
+  "temperature": 16.5,
+  "humidity": 60,
+  "windSpeed": 6,
+  "description": "Partly cloudy, no precipitation",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1016.4
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183658"
+  },
+  "city": "Kokshetau",
+  "temperature": 6.7,
+  "humidity": 78,
+  "windSpeed": 8,
+  "description": "Cloudy, light rain",
+  "date": "30.04.2024",
+  "atmosphericPressure": 1020.8
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183659"
+  },
+  "city": "Astana",
+  "temperature": 2.8,
+  "humidity": 80,
+  "windSpeed": 10,
+  "description": "Partly cloudy",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1008.4
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018365a"
+  },
+  "city": "Almaty",
+  "temperature": 13.9,
+  "humidity": 60,
+  "windSpeed": 5,
+  "description": "Sunny",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1014.4
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018365b"
+  },
+  "city": "Shymkent",
+  "temperature": 18.1,
+  "humidity": 55,
+  "windSpeed": 7,
+  "description": "Sunny",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1012.2
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018365c"
+  },
+  "city": "Aktau",
+  "temperature": 6.4,
+  "humidity": 65,
+  "windSpeed": 12,
+  "description": "Cloudy",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1020
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018365d"
+  },
+  "city": "Aktobe",
+  "temperature": -1,
+  "humidity": 70,
+  "windSpeed": 8,
+  "description": "Overcast",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1014.5
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018365e"
+  },
+  "city": "Atyrau",
+  "temperature": 2,
+  "humidity": 68,
+  "windSpeed": 10,
+  "description": "Cloudy",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1017.8
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018365f"
+  },
+  "city": "Karaganda",
+  "temperature": 6.3,
+  "humidity": 73,
+  "windSpeed": 9,
+  "description": "Partly cloudy",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1009.5
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183660"
+  },
+  "city": "Pavlodar",
+  "temperature": 6.9,
+  "humidity": 80,
+  "windSpeed": 7,
+  "description": "Partly cloudy",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1008.2
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183661"
+  },
+  "city": "Semey",
+  "temperature": 10.1,
+  "humidity": 70,
+  "windSpeed": 6,
+  "description": "Sunny",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1015.2
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183662"
+  },
+  "city": "Taraz",
+  "temperature": 16.9,
+  "humidity": 50,
+  "windSpeed": 6,
+  "description": "Sunny",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1012.3
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183663"
+  },
+  "city": "Kostanay",
+  "temperature": -2.2,
+  "humidity": 72,
+  "windSpeed": 8,
+  "description": "Overcast",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1009.6
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183664"
+  },
+  "city": "Kyzylorda",
+  "temperature": 9.6,
+  "humidity": 40,
+  "windSpeed": 9,
+  "description": "Sunny",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1012.7
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183665"
+  },
+  "city": "Uralsk",
+  "temperature": -1.5,
+  "humidity": 65,
+  "windSpeed": 7,
+  "description": "Overcast",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1012.6
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183666"
+  },
+  "city": "Zhezkazgan",
+  "temperature": 9.6,
+  "humidity": 58,
+  "windSpeed": 8,
+  "description": "Partly cloudy",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1011.1
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183667"
+  },
+  "city": "Petropavlovsk",
+  "temperature": -0.7,
+  "humidity": 80,
+  "windSpeed": 9,
+  "description": "Overcast",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1005.5
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183668"
+  },
+  "city": "Turkistan",
+  "temperature": 18.1,
+  "humidity": 45,
+  "windSpeed": 7,
+  "description": "Sunny",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1012.4
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e0183669"
+  },
+  "city": "Taldykorgan",
+  "temperature": 11.4,
+  "humidity": 65,
+  "windSpeed": 6,
+  "description": "Sunny",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1013.7
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018366a"
+  },
+  "city": "Ekibastuz",
+  "temperature": 6.9,
+  "humidity": 75,
+  "windSpeed": 7,
+  "description": "Partly cloudy",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1007.8
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018366b"
+  },
+  "city": "Balkhash",
+  "temperature": 9.5,
+  "humidity": 60,
+  "windSpeed": 6,
+  "description": "Sunny",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1013.4
+},
+{
+  "_id": {
+    "$oid": "678e96e8495de418e018366c"
+  },
+  "city": "Kokshetau",
+  "temperature": -3.9,
+  "humidity": 78,
+  "windSpeed": 8,
+  "description": "Overcast",
+  "date": "04.11.2024",
+  "atmosphericPressure": 1008.3
+}]

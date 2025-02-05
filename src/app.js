@@ -30,9 +30,11 @@ app.use(cors({
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API Routes
-app.use('/api/user', userRoutes);
+app.use('/api/users', userRoutes);
 app.use('/api/userCrud', userCrudRoutes);
 app.use('/api/forecast', forecastRoutes);
+
+
 
 
 // Start the server

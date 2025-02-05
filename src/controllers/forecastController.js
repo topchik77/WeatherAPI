@@ -1,6 +1,5 @@
 const Forecast = require('../models/forecastModel');
 
-// Function to calculate rainfall prediction (same as before)
 const calculateRainfallPrediction = (temperature, humidity, windSpeed) => {
   const baseRainfall = (humidity / 100) * 50;
   const temperatureFactor = temperature < 0 ? 10 : 20;
@@ -9,7 +8,6 @@ const calculateRainfallPrediction = (temperature, humidity, windSpeed) => {
   return baseRainfall + temperatureFactor + windFactor;
 };
 
-// Function to categorize rainfall prediction (same as before)
 const categorizeRainfall = (rainfall) => {
   if (rainfall > 50) {
     return "Heavy rainfall and thunderstorms";
@@ -20,9 +18,8 @@ const categorizeRainfall = (rainfall) => {
   }
 };
 
-// Get a forecast entry based on city
 const getForecastByCity = async (req, res) => {
-  const { city } = req.params;  // Get the city from the route parameter
+  const { city } = req.params;
 
   try {
     const forecast = await Forecast.findOne({ city });
@@ -30,16 +27,15 @@ const getForecastByCity = async (req, res) => {
       return res.status(404).json({ message: `No forecast data found for city: ${city}` });
     }
 
-    const rainfall = calculateRainfallPrediction(
+    const predictedRainfall = calculateRainfallPrediction(
       forecast.temperature,
       forecast.humidity,
       forecast.windSpeed
     );
 
-    const rainfallCategory = categorizeRainfall(rainfall);
+    const rainfallCategory = categorizeRainfall(predictedRainfall);
 
-    const prediction = {
-      _id: forecast._id,
+    res.status(200).json({
       city: forecast.city,
       temperature: forecast.temperature,
       humidity: forecast.humidity,
@@ -47,11 +43,9 @@ const getForecastByCity = async (req, res) => {
       description: forecast.description,
       date: forecast.date,
       atmosphericPressure: forecast.atmosphericPressure,
-      predictedRainfall: rainfall,
-      rainfallCategory: rainfallCategory,
-    };
-
-    res.status(200).json(prediction);
+      predictedRainfall: predictedRainfall.toFixed(2),
+      rainfallCategory: rainfallCategory
+    });
   } catch (error) {
     res.status(500).json({ message: 'Error retrieving forecast data', error: error.message });
   }

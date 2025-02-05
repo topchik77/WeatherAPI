@@ -1,14 +1,21 @@
 const express = require('express');
-const { registerUser, loginUser, logoutUser, getUserDetails, protect } = require('../controllers/userController');
+const { 
+  registerUser, 
+  loginUser, 
+  logoutUser, 
+  getUserDetails, 
+  protect, 
+  verifyEmail
+} = require('../controllers/userController');
 const { validateRegisterData, validateLoginData } = require('../middleware/validationMiddleware');
 
 const router = express.Router();
 
-
-router.post('/register', validateRegisterData, registerUser); // Register user
-router.post('/login', validateLoginData, loginUser); // Login user
-router.get('/details', protect, getUserDetails); // Access user info
-router.get('/logout', logoutUser); // Logout user
+// Роуты
+router.post('/register', validateRegisterData, registerUser);
+router.get('/verify/:token', verifyEmail); // Подтверждение email
+router.post('/login', validateLoginData, loginUser);
+router.get('/details', protect, getUserDetails);
+router.get('/logout', logoutUser);
 
 module.exports = router;
-
