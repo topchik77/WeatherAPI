@@ -9,35 +9,33 @@ connectDB().catch(console.dir);
 
 const userRoutes = require('./routes/userRoutes');
 const userCrudRoutes = require('./routes/userCrudRoutes');
-
-
 const forecastRoutes = require('./routes/forecastRoutes');
-
-
 
 const app = express();
 
-// Middleware
+
+const PORT = process.env.PORT || 5000;
+
+
 app.use(express.json());
 app.use(cookieParser());
-const PORT = process.env.PORT;
+
 app.use(cors({
-  origin: `http://localhost:${PORT}`,
+  origin: 'http://localhost:' + PORT,
   credentials: true,
 }));
 
-// Static Files
-app.use(express.static(path.join(__dirname, 'public')));
 
-// API Routes
 app.use('/api/users', userRoutes);
 app.use('/api/userCrud', userCrudRoutes);
 app.use('/api/forecast', forecastRoutes);
 
+app.use(express.static(path.join(__dirname, 'front')));
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'front', 'home.html'));
+});
 
-
-// Start the server
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:`,PORT);
 });

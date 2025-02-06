@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>METEORIX</title>
-    <!-- Stylesheet for the page -->
+
     <style>
-        /* General body and font styling */
+
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
@@ -40,64 +40,19 @@
             transition: color 0.3s ease;
         }
         .navbar nav a:hover {
-            color: #1abc9c; /* Light teal on hover */
+            color: #1abc9c;
         }
-        /* Hamburger menu for smaller screens */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-        }
-        .hamburger div {
-            width: 100%;
-            height: 4px;
-            background-color: white;
-            margin: 4px 0;
-            transition: all 0.3s ease;
-        }
-        /* Mobile menu styling */
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            background-color: #34495e; /* Slightly darker blue for mobile menu */
-            position: absolute;
-            top: 100%;
-            right: 0;
-            width: 100%;
-            padding: 10px 0;
-        }
-        .mobile-menu a {
-            color: white;
-            text-align: center;
-            padding: 10px;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            border-bottom: 1px solid #2c3e50;
-        }
-        .mobile-menu a:hover {
-            background-color: #1abc9c; /* Light teal on hover */
-        }
-        /* Show mobile menu when active */
-        .mobile-menu.active {
-            display: flex;
-        }
+
         /* Responsive styles */
         @media screen and (max-width: 768px) {
             .navbar nav {
-                display: none; /* Hide desktop menu */
+                display: none;
             }
-            .hamburger {
-                display: flex; /* Show hamburger menu */
-            }
+
         }
-        /* Cover section styling */
+
         .cover {
-            background-image: url('./img/cover.png'); /* Replace with your image */
+            background-image: url('./images/cover.png');
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -451,102 +406,136 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
+
     <header class="navbar">
-        <img src="./img/logo.png" alt="Meteorix Logo"> <!-- Placeholder logo -->
+        <img src="./img/logo.png" alt="Meteorix Logo">
         <nav>
             <a href="#home">Home</a>
-            <a href="#api">API</a>
-            <a href="./signup.html">Sign In</a>
+            <a href="/API.html">API</a>
+            <a href="/signup.html">Sign In</a>
         </nav>
-        <!-- Hamburger menu -->
-        <div class="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <!-- Mobile menu -->
-        <div class="mobile-menu">
-            <a href="#home">Home</a>
-            <a href="#api">API</a>
-            <a href="#signin">Sign In</a>
-        </div>
     </header>
-    <!-- Cover Section -->
+
     <section class="cover" id="home">
         <h1>Welcome to METEORIX</h1>
         <p>Your weather data, all in one place.</p>
     </section>
+
     <section class="weather">
         <form id="city-form">
             <div class="search">
-                <input type="text" id="search-input" placeholder="enter city name">
+                <input type="text" id="search-input" placeholder="Enter city name">
             </div>
             <button id="search-btn" class="search-btn">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </form>
+        
         <div class="loading" hidden>
             <span></span>
             <span></span>
             <span></span>
         </div>
+        
         <div class="error" hidden>
             <i class="fa-solid fa-circle-exclamation"></i>
             <span>Unknown City</span>
         </div>
+        
         <div class="weather" hidden>
             <div class="heading">
                 <div class="heading-content">
-                    <h2 id="behavior"></h2>
-                    <h1 class="temp"><span id="temp"></span><span>°C</span></h1>
+                    <h1 class="temp"><span id="temp"></span></h1>
                 </div>
                 <div class="weather-icon-placeholder">
                     <img id="weather-icon" alt="Weather Icon">
                 </div>
             </div>
+    
             <div class="information">
-                <div class="humidity info">
+                <div class="rainfall info">
                     <div class="flex">
-                        <i class="fa-solid fa-water"></i>
-                        <h2><span id="humidity"></span>%</h2>
+                        <i class="fa-solid fa-cloud-rain"></i>
+                        <h2 id="rainfall-category"></h2>
                     </div>
-                    <p>Humidity</p>
-                </div>
-                <div class="wind-speed info">
-                    <div class="flex">
-                        <i class="fa-solid fa-wind"></i>
-                        <h1><span id="wind-speed"></span> km/h</h1>
-                    </div>
-                    <p>Wind Speed</p>
-                </div>
+                    <p>Rainfall</p>
+                </div>  
             </div>
+    
             <h3 id="city"></h3>
         </div>
     </section>
-    <!-- Call to Action Section -->
+    
+
     <section class="cta-section">
         <h2>Ready to Dive into the Weather Data?</h2>
         <p>Access our API to get real-time weather information, forecasts, and much more. Leave your email below to stay updated!</p>
-        <!-- Call-to-action form -->
+
         <div class="cta-form">
             <input type="email" placeholder="Enter your Gmail to get updates..." required>
-            <button type="submit">Get Started</button>
+            <button onclick="sendRegistrationEmail()">Get Started</button>
         </div>
     </section>
-    <!-- Footer Section -->
+
     <footer>
         <p>© 2025 METEORIX. All rights reserved.</p>
         <p><a href="./privacyp.html">Privacy Policy</a> | <a href="./TermsofS.html">Terms of Service</a></p>
     </footer>
-    <!-- JavaScript for Mobile Menu -->
+
     <script>
-        // Toggle mobile menu
-        const hamburger = document.querySelector('.hamburger');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("city-form");
+            const input = document.getElementById("search-input");
+            const weatherSection = document.querySelector(".weather");
+            const errorSection = document.querySelector(".error");
+            const loading = document.querySelector(".loading");
+        
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const city = input.value.trim();
+                if (!city) return;
+        
+
+                weatherSection.hidden = true;
+                errorSection.hidden = true;
+                loading.hidden = false;
+        
+                try {
+                    const response = await fetch(`http://localhost:3000/api/forecast/${city}`);
+                    if (!response.ok) throw new Error("City not found");
+        
+                    const data = await response.json();
+        
+
+                    document.getElementById("city").textContent = data.city;
+                    document.getElementById("temp").textContent = data.temperature;
+                    document.getElementById("rainfall-category").textContent = data.rainfallCategory;
+        
+                    weatherSection.hidden = false;
+                } catch (error) {
+                    errorSection.hidden = false;
+                } finally {
+                    loading.hidden = true;
+                }
+            });
+        });        
+        
+        function sendRegistrationEmail() {
+            const email = document.getElementById("emailInput").value;
+            if (!email) {
+                alert("Please enter a valid email address");
+                return;
+            }
+            fetch('/api/register', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ email })
+            }).then(response => response.json())
+              .then(data => alert(data.message))
+              .catch(error => alert("Error sending email"));
+        }
+
     </script>
 </body>
 </html>

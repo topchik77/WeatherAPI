@@ -4,16 +4,17 @@ const {
   loginUser, 
   logoutUser, 
   getUserDetails, 
-  protect, 
   verifyEmail
 } = require('../controllers/userController');
-const { validateRegisterData, validateLoginData } = require('../middleware/validationMiddleware');
+
+
+const { validateRegisterData, validateLoginData, protect } = require('../middleware/validationMiddleware');
 
 const router = express.Router();
 
-// Роуты
-router.post('/register', validateRegisterData, registerUser);
-router.get('/verify/:token', verifyEmail); // Подтверждение email
+
+router.post('/signup', validateRegisterData, registerUser);
+router.get('/verify/:token', verifyEmail);
 router.post('/login', validateLoginData, loginUser);
 router.get('/details', protect, getUserDetails);
 router.get('/logout', logoutUser);

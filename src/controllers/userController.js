@@ -4,7 +4,7 @@ const crypto = require('crypto');
 const User = require('../models/userModel');
 const { sendVerificationEmail } = require('../services/emailService');
 
-// Регистрация с подтверждением по email
+
 const registerUser = async (req, res) => {
   const { username, password, email } = req.body;
 
@@ -33,7 +33,7 @@ const registerUser = async (req, res) => {
   }
 };
 
-// Подтверждение email
+
 const verifyEmail = async (req, res) => {
   const { token } = req.params;
 
@@ -45,7 +45,7 @@ const verifyEmail = async (req, res) => {
 
     user.isVerified = true;
     user.verificationToken = null;
-    await user.save(); // ✅ Обновляем данные в MongoDB
+    await user.save();
 
     res.status(200).json({ message: 'Email verified! You can now log in.' });
   } catch (error) {
@@ -54,12 +54,13 @@ const verifyEmail = async (req, res) => {
 };
 
 
-// Логин пользователя с проверкой подтверждения email
+
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
 
   try {
     const user = await User.findOne({ username });
+
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -69,6 +70,7 @@ const loginUser = async (req, res) => {
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
+
     if (!isMatch) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
@@ -84,7 +86,7 @@ const loginUser = async (req, res) => {
   }
 };
 
-// Обновление accessToken с использованием refreshToken
+
 const refreshToken = (req, res) => {
   const token = req.cookies.refreshToken;
 
@@ -102,30 +104,12 @@ const refreshToken = (req, res) => {
   }
 };
 
-// Выход из аккаунта (удаление токенов)
 const logoutUser = (req, res) => {
   res.clearCookie('refreshToken');
   res.status(200).json({ message: 'Logged out successfully' });
 };
 
-// Защита маршрутов (middleware)
-const protect = async (req, res, next) => {
-  const token = req.headers.authorization?.split(' ')[1];
 
-  if (!token) {
-    return res.status(401).json({ message: 'Unauthorized, no token provided' });
-  }
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = await User.findById(decoded.id).select('-password');
-    next();
-  } catch (error) {
-    res.status(401).json({ message: 'Unauthorized, token is invalid or expired' });
-  }
-};
-
-// Получение данных о пользователе
 const getUserDetails = async (req, res) => {
   try {
     const user = await User.findById(req.user._id).select('-password');
@@ -138,13 +122,11 @@ const getUserDetails = async (req, res) => {
   }
 };
 
-// Экспорт всех функций
 module.exports = {
   registerUser,
   verifyEmail,
   loginUser,
   refreshToken,
   logoutUser,
-  protect,
   getUserDetails,
 };

@@ -132,7 +132,6 @@
       <p>Already have an account? <a href="/login">Sign In</a></p>
     </div>
   </div>
-  <!-- JavaScript for handling login submission -->
   <script>
     document.getElementById("submit").addEventListener("click", async () => {
       const name = document.getElementById("name").value;
@@ -143,7 +142,7 @@
         return;
       }
       try {
-        const response = await fetch("http://localhost:8080/signup", {
+        const response = await fetch("http://localhost:3000/api/users/signup", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, email, password }),
