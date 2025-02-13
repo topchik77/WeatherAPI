@@ -54,7 +54,20 @@ const verifyEmail = async (req, res) => {
   }
 };
 
+const getUserDetails = async (req, res) => {
+  try {
+    const user = req.user; // Retrieved from middleware
 
+    res.status(200).json({
+      username: user.username,
+      email: user.email,
+      isVerified: user.isVerified,
+      apiKey: user.apiKey, // Exposing API key to the user
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to retrieve user details', error: error.message });
+  }
+};
 
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
@@ -160,4 +173,5 @@ module.exports = {
   loginUser,
   refreshToken,
   logoutUser,
+  getUserDetails
 };

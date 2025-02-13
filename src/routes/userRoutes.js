@@ -3,7 +3,8 @@ const {
   registerUser, 
   loginUser, 
   logoutUser,
-  verifyEmail
+  verifyEmail,
+  getUserDetails
 } = require('../controllers/userController');
 
 
@@ -16,5 +17,5 @@ router.post('/signup', validateRegisterData, registerUser);
 router.get('/verify/:token', verifyEmail);
 router.post('/login', validateLoginData, loginUser);
 router.get('/logout', protect, logoutUser);
-
+router.get('/getUserDetails', protect, getUserDetails);
 module.exports = router;
