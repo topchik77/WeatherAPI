@@ -2,8 +2,7 @@ const express = require('express');
 const { 
   registerUser, 
   loginUser, 
-  logoutUser, 
-  getUserDetails, 
+  logoutUser,
   verifyEmail
 } = require('../controllers/userController');
 
@@ -16,7 +15,6 @@ const router = express.Router();
 router.post('/signup', validateRegisterData, registerUser);
 router.get('/verify/:token', verifyEmail);
 router.post('/login', validateLoginData, loginUser);
-router.get('/details', protect, getUserDetails);
-router.get('/logout', logoutUser);
+router.get('/logout', protect, logoutUser);
 
 module.exports = router;

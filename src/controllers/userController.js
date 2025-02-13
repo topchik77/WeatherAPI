@@ -22,6 +22,7 @@ const registerUser = async (req, res) => {
       email,
       password: hashedPassword,
       verificationToken,
+      apiKey: crypto.randomBytes(32).toString('hex'), // Generate API key
     });
 
     await newUser.save();
@@ -75,19 +76,40 @@ const loginUser = async (req, res) => {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    const accessToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '15m' });
-    const refreshToken = jwt.sign({ id: user._id }, process.env.JWT_REFRESH_SECRET, { expiresIn: '7d' });
+    // Generate session ID
+    const sessionId = crypto.randomBytes(32).toString('hex');
 
-    res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true });
+    // Generate tokens
+    const accessToken = jwt.sign({ id: user._id, sessionId }, process.env.JWT_SECRET, { expiresIn: '15m' });
+    const refreshToken = jwt.sign({ id: user._id, sessionId }, process.env.JWT_REFRESH_SECRET, { expiresIn: '7d' });
 
-    res.status(200).json({ message: 'Login successful', accessToken });
+    // Save session to user model (invalidate old sessions)
+    user.sessionId = sessionId;
+    user.refreshToken = refreshToken;
+    await user.save();
+
+    // Set cookies
+    res.cookie('accessToken', accessToken, {
+      httpOnly: true,
+      secure: true, 
+      sameSite: 'Strict',
+      maxAge: 15 * 60 * 1000, 
+    });
+
+    res.cookie('refreshToken', refreshToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'Strict',
+      maxAge: 7 * 24 * 60 * 60 * 1000, 
+    });
+
+    res.status(200).json({ message: 'Login successful' });
   } catch (error) {
     res.status(500).json({ message: 'Internal server error', error: error.message });
   }
 };
 
-
-const refreshToken = (req, res) => {
+const refreshToken = async (req, res) => {
   const token = req.cookies.refreshToken;
 
   if (!token) {
@@ -96,30 +118,40 @@ const refreshToken = (req, res) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_REFRESH_SECRET);
-    const newAccessToken = jwt.sign({ id: decoded.id }, process.env.JWT_SECRET, { expiresIn: '15m' });
+    const user = await User.findById(decoded.id);
 
-    res.status(200).json({ accessToken: newAccessToken });
+    if (!user || user.refreshToken !== token || user.sessionId !== decoded.sessionId) {
+      return res.status(401).json({ message: 'Invalid or expired refresh token' });
+    }
+
+    // Generate new access token
+    const newAccessToken = jwt.sign({ id: user._id, sessionId: user.sessionId }, process.env.JWT_SECRET, { expiresIn: '15m' });
+
+    res.cookie('accessToken', newAccessToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'Strict',
+      maxAge: 15 * 60 * 1000,
+    });
+
+    res.status(200).json({ message: 'Access token refreshed' });
   } catch (error) {
-    res.status(401).json({ message: 'Invalid or expired refresh token' });
+    res.status(401).json({ message: 'Unauthorized, invalid refresh token' });
   }
 };
 
-const logoutUser = (req, res) => {
+const logoutUser = async (req, res) => {
+  const user = await User.findOne({ refreshToken: req.cookies.refreshToken });
+
+  if (user) {
+    user.sessionId = null;
+    user.refreshToken = null;
+    await user.save();
+  }
+
+  res.clearCookie('accessToken');
   res.clearCookie('refreshToken');
   res.status(200).json({ message: 'Logged out successfully' });
-};
-
-
-const getUserDetails = async (req, res) => {
-  try {
-    const user = await User.findById(req.user._id).select('-password');
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-    res.status(200).json(user);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
 };
 
 module.exports = {
@@ -128,5 +160,4 @@ module.exports = {
   loginUser,
   refreshToken,
   logoutUser,
-  getUserDetails,
 };

@@ -9,6 +9,9 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     isVerified: { type: Boolean, default: false },
     verificationToken: { type: String },
+    sessionId: { type: String, default: null },
+    refreshToken: { type: String, default: null },
+    apiKey: {type: String, unique: true, sparse: true}
   },
   { timestamps: true }
 );
@@ -19,10 +22,5 @@ userSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, 10);
   next();
 });
-
-// Method to compare passwords
-userSchema.methods.matchPassword = async function (enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password);
-};
 
 module.exports = mongoose.model('User', userSchema);

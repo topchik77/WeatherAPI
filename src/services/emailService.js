@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendVerificationEmail = (userEmail, verificationToken) => {
-  const verificationLink = `${process.env.API_URL}/api/users/verify/${verificationToken}`; 
+  const verificationLink = `${process.env.CLIENT_URL}/api/users/verify/${verificationToken}`; 
 
 
   const mailOptions = {
