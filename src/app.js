@@ -10,6 +10,7 @@ connectDB().catch(console.dir);
 const userRoutes = require('./routes/userRoutes');
 const userCrudRoutes = require('./routes/userCrudRoutes');
 const forecastRoutes = require('./routes/forecastRoutes');
+const emailRoutes = require('./routes/emailRoutes');
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(cors({
 app.use('/api/users', userRoutes);
 app.use('/api/userCrud', userCrudRoutes);
 app.use('/api/forecast', forecastRoutes);
+app.use('/api/email', emailRoutes);
 
 app.use(express.static(path.join(__dirname, 'front')));
 

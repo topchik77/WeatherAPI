@@ -43,7 +43,7 @@ const getForecastByCity = async (req, res) => {
   const { city } = req.params;
 
   try {
-    const forecast = await Forecast.findOne({ city });
+    const forecast = await Forecast.findOne({ city: new RegExp(`^${city}$`, 'i') });
     if (!forecast) {
       return res.status(404).json({ message: `No forecast data found for city: ${city}` });
     }
@@ -72,4 +72,32 @@ const getForecastByCity = async (req, res) => {
   }
 };
 
-module.exports = { getForecastByCity, checkApiKey };
+const getForecastByCityHome = async (req, res) => {
+  const { city } = req.params;
+
+  try {
+    const forecast = await Forecast.findOne({ city: new RegExp(`^${city}$`, 'i') });
+    if (!forecast) {
+      return res.status(404).json({ message: `No forecast data found for city: ${city}` });
+    }
+
+    const predictedRainfall = calculateRainfallPrediction(
+      forecast.temperature,
+      forecast.humidity,
+      forecast.windSpeed
+    );
+
+    const rainfallCategory = categorizeRainfall(predictedRainfall);
+
+    res.status(200).json({
+      city: forecast.city,
+      temperature: forecast.temperature,
+      humidity: forecast.humidity,
+      windSpeed: forecast.windSpeed,
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Error retrieving forecast data', error: error.message });
+  }
+};
+
+module.exports = { getForecastByCity, checkApiKey, getForecastByCityHome };

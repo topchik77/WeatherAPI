@@ -14,19 +14,18 @@ const registerUser = async (req, res) => {
       return res.status(400).json({ message: 'Username or email already exists' });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
     const verificationToken = crypto.randomBytes(32).toString('hex');
 
     const newUser = new User({
       username,
       email,
-      password: hashedPassword,
+      password: password,
       verificationToken,
       apiKey: crypto.randomBytes(32).toString('hex'), // Generate API key
     });
 
     await newUser.save();
-    await sendVerificationEmail(email, verificationToken);
+    await sendVerificationEmail(email, newUser.verificationToken);
 
     res.status(201).json({ message: 'Check your email to verify your account.' });
   } catch (error) {
@@ -70,55 +69,56 @@ const getUserDetails = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ username });
-
+    // Добавляем логи для отладки
+    console.log('Login attempt:', { email });
+    
+    const user = await User.findOne({ email });
     if (!user) {
+      console.log('User not found');
       return res.status(404).json({ message: 'User not found' });
+    }
+
+    console.log('User found:', { 
+      email: user.email, 
+      isVerified: user.isVerified,
+      hasPassword: !!user.password,
+      password: password
+    });
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    console.log('Password match:', isMatch);
+
+    if (!isMatch) {
+      return res.status(401).json({ message: 'Invalid credentials' });
     }
 
     if (!user.isVerified) {
       return res.status(401).json({ message: 'Please verify your email before logging in.' });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    // Если все проверки пройдены, создаем токен
+    const token = jwt.sign(
+      { userId: user._id },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
 
-    if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
-    }
-
-    // Generate session ID
-    const sessionId = crypto.randomBytes(32).toString('hex');
-
-    // Generate tokens
-    const accessToken = jwt.sign({ id: user._id, sessionId }, process.env.JWT_SECRET, { expiresIn: '15m' });
-    const refreshToken = jwt.sign({ id: user._id, sessionId }, process.env.JWT_REFRESH_SECRET, { expiresIn: '7d' });
-
-    // Save session to user model (invalidate old sessions)
-    user.sessionId = sessionId;
-    user.refreshToken = refreshToken;
-    await user.save();
-
-    // Set cookies
-    res.cookie('accessToken', accessToken, {
-      httpOnly: true,
-      secure: true, 
-      sameSite: 'Strict',
-      maxAge: 15 * 60 * 1000, 
+    res.status(200).json({
+      message: 'Login successful',
+      token,
+      user: {
+        id: user._id,
+        email: user.email,
+        isVerified: user.isVerified
+      }
     });
 
-    res.cookie('refreshToken', refreshToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: 'Strict',
-      maxAge: 7 * 24 * 60 * 60 * 1000, 
-    });
-
-    res.status(200).json({ message: 'Login successful' });
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error', error: error.message });
+    console.error('Login error:', error);
+    res.status(500).json({ message: error.message });
   }
 };
 

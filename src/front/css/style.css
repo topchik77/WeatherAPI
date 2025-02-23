@@ -216,3 +216,24 @@ input:active {
         --unit: 1.25rem;
     }
 }
+.weather-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+#city {
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+#getWeather {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+#weatherResult {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #333;
+}

@@ -111,7 +111,7 @@
 </head>
 <body>
   <div class="signup-box">
-    <a href="/" class="close-btn">&times;</a>
+    <a href="./login.html" class="close-btn">&times;</a>
     <div class="signup-header">
       <header>Sign In</header>
     </div>
@@ -129,7 +129,7 @@
       <label for="submit">Sign Up</label>
     </div>
     <div class="sign-in-link">
-      <p>Already have an account? <a href="/login">Sign In</a></p>
+      <p>Already have an account? <a href="./login.html">Sign In</a></p>
     </div>
   </div>
   <script>
@@ -142,14 +142,14 @@
         return;
       }
       try {
-        const response = await fetch("http://localhost:3000/api/users/signup", {
+        const response = await fetch("/api/users/signup", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, password }),
+          body: JSON.stringify({ username: name, email, password }),
         });
         const data = await response.json();
         if (response.ok) {
-          alert(`Welcome ${data.name}!`);
+          alert(`${data.message}!`);
         } else {
           alert(`Error: ${data.error}`);
         }

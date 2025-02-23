@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>METEORIX</title>
 
+    <!-- Подключение Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
 
         body {
@@ -441,38 +444,37 @@
             <i class="fa-solid fa-circle-exclamation"></i>
             <span>Unknown City</span>
         </div>
-        
-        <div class="weather" hidden>
-            <div class="heading">
-                <div class="heading-content">
-                    <h1 class="temp"><span id="temp"></span></h1>
-                </div>
-                <div class="weather-icon-placeholder">
-                    <img id="weather-icon" alt="Weather Icon">
-                </div>
-            </div>
-    
-            <div class="information">
-                <div class="rainfall info">
-                    <div class="flex">
-                        <i class="fa-solid fa-cloud-rain"></i>
-                        <h2 id="rainfall-category"></h2>
-                    </div>
-                    <p>Rainfall</p>
-                </div>  
-            </div>
-    
-            <h3 id="city"></h3>
-        </div>
     </section>
-    
+
+    <div class="weather-results" hidden>
+        <div class="heading">
+            <div class="heading-content">
+                <h1 class="temp"><span id="temp"></span></h1>
+            </div>
+            <div class="weather-icon-placeholder">
+                <img id="weather-icon" alt="Weather Icon">
+            </div>
+        </div>
+
+        <div class="information">
+            <div class="rainfall info">
+                <div class="flex">
+                    <i class="fa-solid fa-cloud-rain"></i>
+                    <h2 id="rainfall-category"></h2>
+                </div>
+                <p>Rainfall</p>
+            </div>  
+        </div>
+
+        <h3 id="city"></h3>
+    </div>
 
     <section class="cta-section">
         <h2>Ready to Dive into the Weather Data?</h2>
         <p>Access our API to get real-time weather information, forecasts, and much more. Leave your email below to stay updated!</p>
 
         <div class="cta-form">
-            <input type="email" placeholder="Enter your Gmail to get updates..." required>
+            <input type="email" id="emailInput" placeholder="Enter your Gmail to get updates..." required>
             <button onclick="sendRegistrationEmail()">Get Started</button>
         </div>
     </section>
@@ -487,7 +489,7 @@
         document.addEventListener("DOMContentLoaded", () => {
             const form = document.getElementById("city-form");
             const input = document.getElementById("search-input");
-            const weatherSection = document.querySelector(".weather");
+            const weatherResults = document.querySelector(".weather-results");
             const errorSection = document.querySelector(".error");
             const loading = document.querySelector(".loading");
         
@@ -496,23 +498,21 @@
                 const city = input.value.trim();
                 if (!city) return;
         
-
-                weatherSection.hidden = true;
+                weatherResults.hidden = true;
                 errorSection.hidden = true;
                 loading.hidden = false;
         
                 try {
-                    const response = await fetch(`http://localhost:3000/api/forecast/${city}`);
+                    const response = await fetch(`/api/forecast/home/${city}`);
                     if (!response.ok) throw new Error("City not found");
         
                     const data = await response.json();
         
-
                     document.getElementById("city").textContent = data.city;
                     document.getElementById("temp").textContent = data.temperature;
                     document.getElementById("rainfall-category").textContent = data.rainfallCategory;
         
-                    weatherSection.hidden = false;
+                    weatherResults.hidden = false;
                 } catch (error) {
                     errorSection.hidden = false;
                 } finally {
@@ -527,7 +527,7 @@
                 alert("Please enter a valid email address");
                 return;
             }
-            fetch('/api/register', {
+            fetch('/api/email/send-email', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ email })
