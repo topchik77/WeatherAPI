@@ -1,5 +1,5 @@
 const Forecast = require('../models/forecastModel');
-const User = require('../models/userModel'); // Import User model to check API keys
+const User = require('../models/userModel');
 
 const checkApiKey = async (req, res, next) => {
 	const apiKey = req.query.apiKey;

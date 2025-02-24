@@ -77,22 +77,21 @@ const loginUser = async (req, res) => {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      console.log('Пользователь не найден:', email);
-      return res.status(404).json({ message: 'Пользователь не найден' });
+      console.log('User not found:', email);
+      return res.status(404).json({ message: 'User not found' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      console.log('Неверный пароль для пользователя:', email);
-      return res.status(401).json({ message: 'Неверные учетные данные' });
+      console.log('Incorrect password for user:', email);
+      return res.status(401).json({ message: 'Incorrect credentials' });
     }
 
     if (!user.isVerified) {
-      console.log('Неверифицированный пользователь:', email);
-      return res.status(401).json({ message: 'Пожалуйста, подтвердите email перед входом.' });
+      console.log('Unverified user:', email);
+      return res.status(401).json({ message: 'Please verify your email before logging in.' });
     }
 
-    // Создаем токен с дополнительными данными
     const token = jwt.sign(
       { 
         id: user._id, 
@@ -104,7 +103,7 @@ const loginUser = async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    console.log('Токен создан для пользователя:', email);
+    console.log('Token created for user:', email);
 
     // Устанавливаем токен в куки с расширенными опциями
     res.cookie('accessToken', token, {
@@ -115,10 +114,11 @@ const loginUser = async (req, res) => {
       // path: '/'
     });
 
-    console.log('Кука установлена для пользователя:', email);
+    console.log('Cookie set for user:', email);
 
     res.status(200).json({
-      message: 'Вход выполнен успешно',
+      message: 'Login successful',
+      token: token,
       user: {
         id: user._id,
         email: user.email,
@@ -128,7 +128,7 @@ const loginUser = async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Ошибка входа:', error);
+    console.error('Login error:', error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -198,8 +198,8 @@ const generateUserApiKey = async (req, res) => {
 
 const getUserApiKeys = async (req, res) => {
   try {
-    const user = req.user; // Получаем пользователя из middleware
-    res.status(200).json({ apiKeys: user.apiKeys }); // Возвращаем массив API ключей
+    const user = req.user;
+    res.status(200).json({ apiKeys: user.apiKeys });
   } catch (error) {
     res.status(500).json({ message: 'Failed to retrieve API keys', error: error.message });
   }

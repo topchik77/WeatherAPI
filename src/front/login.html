@@ -174,11 +174,11 @@
         });
         const data = await response.json();
         if (response.ok) {
-          alert(`Добро пожаловать, ${data.user.email}!`);
+          alert(`Welcome, ${data.user.email}!`);
           localStorage.setItem('isAuthenticated', 'true');
           window.location.href = "/home.html";
         } else {
-          alert(`Ошибка: ${data.message}`);
+          alert(`Error: ${data.message}`);
         }
       } catch (error) {
         console.error("Error:", error);

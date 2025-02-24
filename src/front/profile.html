@@ -80,7 +80,9 @@
 </head>
 <body>
     <header class="navbar">
-        <img src="./img/logo.png" alt="Meteorix Logo">
+        <div style="font-size: 2rem; font-weight: bold; background: linear-gradient(to right, blue, yellow); -webkit-background-clip: text; background-clip: text; color: transparent;">
+            METEORIX
+        </div>
         <nav>
             <a href="/home.html">Home</a>
             <a href="/API.html">API</a>
@@ -94,7 +96,7 @@
         <h2>API Keys</h2>
         <button id="generate-api-key">Generate New API Key</button>
         <ul id="api-keys-list">
-            <li id="no-keys-message" style="display: none;">Нет ключей</li>
+            <li id="no-keys-message" style="display: none;">No keys</li>
         </ul>
     </div>
 
@@ -105,7 +107,7 @@
             const noKeysMessage = document.getElementById("no-keys-message");
             const usernameHeader = document.querySelector('.profile-container h1');
 
-            // Получение имени пользователя из localStorage
+
             const username = localStorage.getItem('username');
 
             if (username) {
@@ -114,7 +116,7 @@
                 usernameHeader.textContent = 'Thank you for choosing us, dear user';
             }
 
-            // Fetch existing API keys
+
             
             async function fetchApiKeys() {
                 try {
@@ -138,9 +140,9 @@
                             copyButton.innerHTML = '<i class="fas fa-copy"></i>';
                             copyButton.addEventListener('click', () => {
                                 navigator.clipboard.writeText(key).then(() => {
-                                    alert('Ключ скопирован в буфер обмена');
+                                    alert('Key copied to clipboard');
                                 }).catch(err => {
-                                    console.error('Ошибка копирования:', err);
+                                    console.error('Copy error:', err);
                                 });
                             });
 
@@ -155,9 +157,9 @@
                                     });
                                     const deleteData = await deleteResponse.json();
                                     alert(deleteData.message);
-                                    fetchApiKeys(); // Refresh the list of API keys
+                                    fetchApiKeys();
                                 } catch (error) {
-                                    console.error('Ошибка удаления:', error);
+                                    console.error('Delete error:', error);
                                 }
                             });
 
@@ -180,7 +182,7 @@
                         ?.split('=')[1];
 
                     if (!token) {
-                        alert('Вы не авторизованы. Пожалуйста, войдите в систему.');
+                        alert('You are not authorized. Please log in.');
                         window.location.href = '/login.html';
                         return;
                     }
@@ -197,7 +199,7 @@
                     const data = await response.json();
 
                     if (response.status === 401) {
-                        alert('Сессия истекла. Пожалуйста, войдите снова.');
+                        alert('Session expired. Please log in again.');
                         window.location.href = '/login.html';
                         return;
                     }
@@ -211,7 +213,7 @@
                     fetchApiKeys();
                 } catch (error) {
                     console.error('Error generating API key:', error);
-                    alert('Ошибка при генерации API ключа');
+                    alert('Error generating API key');
                 }
             });
 

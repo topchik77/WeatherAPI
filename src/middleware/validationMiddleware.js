@@ -35,41 +35,43 @@ const protect = async (req, res, next) => {
     const token = req.cookies.accessToken;
     
     console.log('=== Auth Middleware ===');
-    console.log('Все куки:', req.cookies);
-    console.log('Токен доступа:', token);
+    console.log('All cookies:', req.cookies);
+    console.log('Access token:', token);
 
     if (!token) {
-      console.log('Токен отсутствует в запросе');
+      console.log('Token is missing in request');
       return res.status(401).json({ 
         message: 'Unauthorized, no token provided',
         cookies: req.cookies,
         headers: req.headers
       });
     }
+    console.log('Extracted token:', token);
+
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log('Декодированный токен:', decoded);
+    console.log('Decoded token:', decoded);
 
     const user = await User.findById(decoded.id);
-    console.log('Найденный пользователь:', user ? 'существует' : 'не найден');
+    console.log('Found user:', user ? 'exists' : 'not found');
 
     if (!user) {
-      console.log('Пользователь не найден в базе данных');
+      console.log('User not found in database');
       return res.status(401).json({ message: 'Unauthorized, user not found' });
     }
 
     if (user.sessionId !== decoded.sessionId) {
-      console.log('Несоответствие sessionId');
+      console.log('SessionId mismatch');
       console.log('User sessionId:', user.sessionId);
       console.log('Token sessionId:', decoded.sessionId);
       return res.status(401).json({ message: 'Unauthorized, session expired' });
     }
 
     req.user = user;
-    console.log('Аутентификация успешна для пользователя:', user.email);
+    console.log('Authentication successful for user:', user.email);
     next();
   } catch (error) {
-    console.error('Ошибка проверки токена:', error);
+    console.error('Token verification error:', error);
     res.status(401).json({ 
       message: 'Unauthorized, token is invalid or expired',
       error: error.message 
@@ -100,20 +102,20 @@ const protectAPI = async (req, res, next) => {
 
 const checkApiKey = async (req, res, next) => {
   const apiKey = req.query.apiKey;
-  console.log('Полученный API ключ:', apiKey);
+  console.log('Received API key:', apiKey);
 
   if (!apiKey) {
-    console.log('API ключ отсутствует');
+    console.log('API key is missing');
     return res.status(401).json({ message: 'API key is missing' });
   }
 
   const user = await User.findOne({ apiKeys: apiKey });
   if (!user) {
-    console.log('Неверный API ключ');
+    console.log('Invalid API key');
     return res.status(401).json({ message: 'Invalid API key' });
   }
 
-  console.log('API ключ действителен для пользователя:', user.email);
+  console.log('API key is valid for user:', user.email);
   req.user = user;
   next();
 };
