@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - METEORIX</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        .navbar {
+            background-color: #2c3e50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar img {
+            height: 40px;
+        }
+        .navbar nav {
+            display: flex;
+            gap: 20px;
+        }
+        .navbar nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .navbar nav a:hover {
+            color: #1abc9c;
+        }
+        .profile-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #1abc9c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #16a085;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #f0f8ff;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <img src="./img/logo.png" alt="Meteorix Logo">
+        <nav>
+            <a href="/home.html">Home</a>
+            <a href="/API.html">API</a>
+            <a href="/profile.html">Profile</a>
+            <button id="logout">Logout</button>
+        </nav>
+    </header>
+
+    <div class="profile-container">
+        <h1>Your Profile</h1>
+        <h2>API Keys</h2>
+        <button id="generate-api-key">Generate New API Key</button>
+        <ul id="api-keys-list">
+            <li id="no-keys-message" style="display: none;">Нет ключей</li>
+            <!-- Existing API keys will be listed here -->
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const apiKeysList = document.getElementById("api-keys-list");
+            const generateApiKeyButton = document.getElementById("generate-api-key");
+            const noKeysMessage = document.getElementById("no-keys-message");
+
+            // Fetch existing API keys
+            async function fetchApiKeys() {
+                try {
+                    const response = await fetch('/api/users/api-keys', {
+                        method: 'GET',
+                        headers: { 'Content-Type': 'application/json' },
+                        credentials: 'include'
+                    });
+                    const data = await response.json();
+                    apiKeysList.innerHTML = '';
+
+                    if (data.apiKeys.length === 0) {
+                        noKeysMessage.style.display = 'block';
+                    } else {
+                        noKeysMessage.style.display = 'none';
+                        data.apiKeys.forEach(key => {
+                            const li = document.createElement('li');
+                            li.textContent = key;
+
+                            const copyButton = document.createElement('button');
+                            copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+                            copyButton.addEventListener('click', () => {
+                                navigator.clipboard.writeText(key).then(() => {
+                                    alert('Ключ скопирован в буфер обмена');
+                                }).catch(err => {
+                                    console.error('Ошибка копирования:', err);
+                                });
+                            });
+
+                            const deleteButton = document.createElement('button');
+                            deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
+                            deleteButton.addEventListener('click', async () => {
+                                try {
+                                    const deleteResponse = await fetch(`/api/users/api-keys/${key}`, {
+                                        method: 'DELETE',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        credentials: 'include'
+                                    });
+                                    const deleteData = await deleteResponse.json();
+                                    alert(deleteData.message);
+                                    fetchApiKeys(); // Refresh the list of API keys
+                                } catch (error) {
+                                    console.error('Ошибка удаления:', error);
+                                }
+                            });
+
+                            li.appendChild(copyButton);
+                            li.appendChild(deleteButton);
+                            apiKeysList.appendChild(li);
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error fetching API keys:', error);
+                }
+            }
+
+            // Generate new API key
+            generateApiKeyButton.addEventListener('click', async () => {
+                try {
+                    const token = document.cookie
+                        .split('; ')
+                        .find(row => row.startsWith('accessToken='))
+                        ?.split('=')[1];
+
+                    if (!token) {
+                        alert('Вы не авторизованы. Пожалуйста, войдите в систему.');
+                        window.location.href = '/login.html';
+                        return;
+                    }
+
+                    const response = await fetch('/api/users/generate-api-key', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        credentials: 'include'
+                    });
+
+                    const data = await response.json();
+
+                    if (response.status === 401) {
+                        alert('Сессия истекла. Пожалуйста, войдите снова.');
+                        window.location.href = '/login.html';
+                        return;
+                    }
+
+                    if (response.status === 403) {
+                        alert('To create more than two API keys, please purchase a subscription.');
+                        return;
+                    }
+
+                    alert(data.message);
+                    fetchApiKeys();
+                } catch (error) {
+                    console.error('Error generating API key:', error);
+                    alert('Ошибка при генерации API ключа');
+                }
+            });
+
+            fetchApiKeys(); // Initial fetch of API keys
+
+            document.getElementById("logout").addEventListener("click", async () => {
+                try {
+                    const response = await fetch("/api/users/logout", {
+                        method: "GET",
+                        credentials: 'include'
+                    });
+                    if (response.ok) {
+                        localStorage.removeItem('isAuthenticated');
+                        alert("Logged out successfully");
+                        window.location.href = "/home.html";
+                    } else {
+                        alert("Failed to logout");
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                    alert("Failed to logout. Please try again.");
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

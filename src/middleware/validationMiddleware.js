@@ -1,5 +1,6 @@
 const Joi = require('joi');
 const User = require('../models/userModel');
+const jwt = require('jsonwebtoken');
 
 const signupSchema = Joi.object({
   username: Joi.string().min(3).max(30).required(),
@@ -30,24 +31,49 @@ const validateLoginData = (req, res, next) => {
 };
 
 const protect = async (req, res, next) => {
-  const token = req.cookies.accessToken;
-
-  if (!token) {
-    return res.status(401).json({ message: 'Unauthorized, no token provided' });
-  }
-
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await User.findById(decoded.id);
+    const token = req.cookies.accessToken;
+    
+    console.log('=== Auth Middleware ===');
+    console.log('Все куки:', req.cookies);
+    console.log('Токен доступа:', token);
 
-    if (!user || user.sessionId !== decoded.sessionId) {
+    if (!token) {
+      console.log('Токен отсутствует в запросе');
+      return res.status(401).json({ 
+        message: 'Unauthorized, no token provided',
+        cookies: req.cookies,
+        headers: req.headers
+      });
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log('Декодированный токен:', decoded);
+
+    const user = await User.findById(decoded.id);
+    console.log('Найденный пользователь:', user ? 'существует' : 'не найден');
+
+    if (!user) {
+      console.log('Пользователь не найден в базе данных');
+      return res.status(401).json({ message: 'Unauthorized, user not found' });
+    }
+
+    if (user.sessionId !== decoded.sessionId) {
+      console.log('Несоответствие sessionId');
+      console.log('User sessionId:', user.sessionId);
+      console.log('Token sessionId:', decoded.sessionId);
       return res.status(401).json({ message: 'Unauthorized, session expired' });
     }
 
     req.user = user;
+    console.log('Аутентификация успешна для пользователя:', user.email);
     next();
   } catch (error) {
-    res.status(401).json({ message: 'Unauthorized, token is invalid or expired' });
+    console.error('Ошибка проверки токена:', error);
+    res.status(401).json({ 
+      message: 'Unauthorized, token is invalid or expired',
+      error: error.message 
+    });
   }
 };
 

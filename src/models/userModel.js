@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema(
     verificationToken: { type: String },
     sessionId: { type: String, default: null },
     refreshToken: { type: String, default: null },
-    apiKey: {type: String, unique: true, sparse: true}
+    apiKeys: { type: [String], default: [] }
   },
   { timestamps: true }
 );

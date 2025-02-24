@@ -3,24 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Documentation</title>
+    <title>METEORIX Weather API - Documentation</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1abc9c;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Navigation bar styling */
+        .navbar {
+            background-color: #2c3e50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar img {
+            height: 40px;
+        }
+        .navbar nav {
+            display: flex;
+            gap: 20px;
+        }
+        .navbar nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .navbar nav a:hover {
+            color: #1abc9c;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #2c3e50;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2, h3 {
+            color: white;
+        }
+        code {
+            background: #34495e;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #ecf0f1;
+        }
+        pre {
+            background: #34495e;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            color: #ecf0f1;
+        }
+        .endpoint {
+            margin: 20px 0;
+            padding: 15px;
+            border-left: 4px solid #1abc9c;
+        }
+        .home-button {
+            background-color: white;
+            color: #34495e;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .home-button:hover {
+            background-color: #ecf0f1;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .navbar nav {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Weather API Documentation</h1>
-    <section>
+    <header class="navbar">
+        <img src="./img/logo.png" alt="Meteorix Logo">
+        <nav>
+            <a href="/home.html">Home</a>
+            <a href="/API.html">API</a>
+            <a href="/signup.html">Sign In</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>HOW TO USE OUR API</h1>
+        <p>Welcome to the METEORIX Weather API documentation! Our API provides accurate and up-to-date weather data for any location worldwide.</p>
+
         <h2>Getting Started</h2>
-        <p>To use our Weather API, you need an API key. You can obtain an API key by signing up on our platform.</p>
-    </section>
-    <section>
-        <h2>Endpoints</h2>
-        <h3>Get Weather by City</h3>
-        <p>Endpoint: <code>/api/forecast/:city</code></p>
-        <p>Method: GET</p>
-        <p>Description: Retrieve weather data for a specific city.</p>
-    </section>
-    <section>
-        <h2>API Key Management</h2>
-        <p>To manage your API keys, visit your profile page. You can generate a new key or view existing keys.</p>
-    </section>
+        <p>To start using the API, you need an API key. After signing up, you’ll receive a unique key to include in every request.</p>
+        <ul>
+            <li>Base URL: <code>https://api.meteorix.com/v1/</code></li>
+            <li>Response Format: JSON</li>
+            <li>Authentication: via <code>api_key</code> parameter</li>
+        </ul>
+
+        <h2>Authentication</h2>
+        <p>Include your API key as a parameter in every request:</p>
+        <pre><code>?api_key=YOUR_API_KEY</code></pre>
+
+        <h2>Available Endpoints</h2>
+
+        <div class="endpoint">
+            <h3>1. Current Weather</h3>
+            <p><strong>GET</strong> <code>/weather/current</code></p>
+            <p>Returns current weather conditions for a specified location.</p>
+            <h4>Parameters:</h4>
+            <ul>
+                <li><code>lat</code> (required) - latitude (e.g., 51.1694)</li>
+                <li><code>lon</code> (required) - longitude (e.g., 71.4491)</li>
+                <li><code>api_key</code> (required) - your API key</li>
+                <li><code>units</code> (optional) - units of measurement (metric/imperial, default: metric)</li>
+            </ul>
+            <h4>Example Request:</h4>
+            <pre><code>https://api.meteorix.com/v1/weather/current?lat=51.1694&lon=71.4491&api_key=YOUR_API_KEY</code></pre>
+            <h4>Example Response:</h4>
+            <pre><code>{
+  "city": "Astana",
+  "temperature": 18,
+  "humidity": 75,
+  "windSpeed": 15,
+  "description": "Cloudy, rain, thunderstorm",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1000.6
+}</code></pre>
+        </div>
+
+        <div class="endpoint">
+            <h3>2. 5-Day Forecast</h3>
+            <p><strong>GET</strong> <code>/weather/forecast</code></p>
+            <p>Returns a 5-day weather forecast with 3-hour intervals.</p>
+            <h4>Parameters:</h4>
+            <ul>
+                <li><code>lat</code> (required) - latitude</li>
+                <li><code>lon</code> (required) - longitude</li>
+                <li><code>api_key</code> (required) - your API key</li>
+                <li><code>units</code> (optional) - units of measurement</li>
+            </ul>
+            <h4>Example Request:</h4>
+            <pre><code>https://api.meteorix.com/v1/weather/forecast?lat=51.1694&lon=71.4491&api_key=YOUR_API_KEY</code></pre>
+        </div>
+
+        <h2>Response Format</h2>
+        <p>All responses are returned in JSON format. Here’s the structure for a single weather data point:</p>
+        <pre><code>{
+  "city": "Astana",
+  "temperature": 18,
+  "humidity": 75,
+  "windSpeed": 15,
+  "description": "Cloudy, rain, thunderstorm",
+  "date": "09.08.2024",
+  "atmosphericPressure": 1000.6
+}</code></pre>
+        <p><strong>Field Descriptions:</strong></p>
+        <ul>
+            <li><code>city</code> - Name of the city</li>
+            <li><code>temperature</code> - Temperature in degrees (metric: Celsius, imperial: Fahrenheit)</li>
+            <li><code>humidity</code> - Humidity percentage</li>
+            <li><code>windSpeed</code> - Wind speed in km/h (metric) or mph (imperial)</li>
+            <li><code>description</code> - Weather condition description</li>
+            <li><code>date</code> - Date of the data</li>
+            <li><code>atmosphericPressure</code> - Atmospheric pressure in hPa</li>
+        </ul>
+
+        <h2>Example Usage</h2>
+        <h3>JavaScript (Fetch API):</h3>
+        <pre><code>const apiKey = 'YOUR_API_KEY';
+const url = `https://api.meteorix.com/v1/weather/current?lat=51.1694&lon=71.4491&api_key=${apiKey}`;
+
+fetch(url)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+</code></pre>
+
+        <h2>Rate Limits & Pricing</h2>
+        <ul>
+            <li>Free Tier: 100 requests per day</li>
+            <li>Paid Tier: Starting at $10/month for 10,000 requests</li>
+            <li>Max Request Rate: 10 requests per minute</li>
+        </ul>
+
+        <h2>Error Codes</h2>
+        <ul>
+            <li><code>400</code> - Invalid request parameters</li>
+            <li><code>401</code> - Invalid or missing API key</li>
+            <li><code>429</code> - Rate limit exceeded</li>
+            <li><code>500</code> - Internal server error</li>
+        </ul>
+
+        <h2>Contact Us</h2>
+        <p>For any questions, reach out to <a href="mailto:support@meteorix.com" style="color: #1abc9c;">support@meteorix.com</a>.</p>
+    </div>
 </body>
-</html>        
+</html>

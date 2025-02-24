@@ -169,12 +169,15 @@
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password }),
+          credentials: 'include'
         });
         const data = await response.json();
         if (response.ok) {
-          alert(`Welcome ${data.name}!`);
+          alert(`Добро пожаловать, ${data.user.email}!`);
+          localStorage.setItem('isAuthenticated', 'true');
+          window.location.href = "/home.html";
         } else {
-          alert(`Error: ${data.error}`);
+          alert(`Ошибка: ${data.message}`);
         }
       } catch (error) {
         console.error("Error:", error);
