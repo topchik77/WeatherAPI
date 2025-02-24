@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - METEORIX</title>
+    <title>Profile</title>
+    <link rel="icon" type="image/png" href="./images/favico.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -89,12 +90,11 @@
     </header>
 
     <div class="profile-container">
-        <h1>Your Profile</h1>
+        <h1>Thank you for choosing us, dear username</h1>
         <h2>API Keys</h2>
         <button id="generate-api-key">Generate New API Key</button>
         <ul id="api-keys-list">
             <li id="no-keys-message" style="display: none;">Нет ключей</li>
-            <!-- Existing API keys will be listed here -->
         </ul>
     </div>
 
@@ -103,8 +103,19 @@
             const apiKeysList = document.getElementById("api-keys-list");
             const generateApiKeyButton = document.getElementById("generate-api-key");
             const noKeysMessage = document.getElementById("no-keys-message");
+            const usernameHeader = document.querySelector('.profile-container h1');
+
+            // Получение имени пользователя из localStorage
+            const username = localStorage.getItem('username');
+
+            if (username) {
+                usernameHeader.textContent = `Thank you for choosing us, dear ${username}`;
+            } else {
+                usernameHeader.textContent = 'Thank you for choosing us, dear user';
+            }
 
             // Fetch existing API keys
+            
             async function fetchApiKeys() {
                 try {
                     const response = await fetch('/api/users/api-keys', {
@@ -204,7 +215,7 @@
                 }
             });
 
-            fetchApiKeys(); // Initial fetch of API keys
+            fetchApiKeys();
 
             document.getElementById("logout").addEventListener("click", async () => {
                 try {
