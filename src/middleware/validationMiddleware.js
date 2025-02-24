@@ -98,5 +98,24 @@ const protectAPI = async (req, res, next) => {
   }
 };
 
+const checkApiKey = async (req, res, next) => {
+  const apiKey = req.query.apiKey;
+  console.log('Полученный API ключ:', apiKey);
 
-module.exports = { validateRegisterData, validateLoginData, protect, protectAPI};
+  if (!apiKey) {
+    console.log('API ключ отсутствует');
+    return res.status(401).json({ message: 'API key is missing' });
+  }
+
+  const user = await User.findOne({ apiKeys: apiKey });
+  if (!user) {
+    console.log('Неверный API ключ');
+    return res.status(401).json({ message: 'Invalid API key' });
+  }
+
+  console.log('API ключ действителен для пользователя:', user.email);
+  req.user = user;
+  next();
+};
+
+module.exports = { validateRegisterData, validateLoginData, protect, protectAPI, checkApiKey };

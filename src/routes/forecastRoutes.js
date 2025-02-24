@@ -1,10 +1,10 @@
 const express = require('express');
-const { getForecastByCity, checkApiKey, getForecastByCityHome } = require('../controllers/forecastController'); // Импорт контроллера
-const { protect, protectAPI } = require('../middleware/validationMiddleware');
+const { getForecastByCity, getForecastByCityHome } = require('../controllers/forecastController'); // Импорт контроллера
+const { checkApiKey } = require('../middleware/validationMiddleware');
 
 const router = express.Router();
 
-router.get('/:city', protect, protectAPI, checkApiKey, getForecastByCity);
+router.get('/:city', checkApiKey, getForecastByCity);
 router.get('/api/weather/:city', getForecastByCity);
 router.get('/home/:city', getForecastByCityHome);
 
